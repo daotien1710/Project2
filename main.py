@@ -1,0 +1,466 @@
+import base64
+import streamlit as st
+st.set_page_config(layout="wide")
+
+@st.cache_data  
+def get_img_as_base64(file):
+    with open(file, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+
+img = get_img_as_base64("images.jpg")
+
+page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+background-image: url("data:image/png;base64,{img}");
+background-size: 180%;
+background-position: top left;
+background-repeat: no-repeat;
+background-attachment: local;
+}}
+
+[id="tabs-bui3-tab-0"]{{
+background-color: rgba(0, 0, 0, 0);
+}}
+
+[id="tabs-bui3-tab-1"]{{
+background-color: rgba(0, 0, 0, 0);
+}}
+
+[id="tabs-bui3-tab-2"]{{
+background-color: rgba(0, 0, 0, 0);
+}}
+
+[id="tabs-bui3-tab-3"]{{
+background-color: rgba(0, 0, 0, 0);
+}}
+
+[id="tabs-bui3-tab-4"]{{
+background-color: rgba(0, 0, 0, 0);
+}}
+
+[id="tabs-bui3-tab-5"]{{
+background-color: rgba(0, 0, 0, 0);
+}}
+
+[id="tabs-bui3-tab-6"]{{
+background-color: rgba(0, 0, 0, 0);
+}}
+
+[data-testid="stSidebar"] > div:first-child {{
+background-image: url("data:image/png;base64,{img}");
+background-size: 380%;
+background-position: top left;
+background-repeat: no-repeat;
+background-attachment: local;
+}}
+
+[data-testid="stHeader"] {{
+background: rgba(0,0,0,0);
+}}
+
+[data-testid="stToolbar"] {{
+right: 2rem;
+}}
+</style>
+"""
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+# from streamlit import config
+# config.set_option('theme', 'blue')
+
+import pandas as pd
+import plotly.express as px
+import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+import re
+import seaborn as sns
+
+# Reading yaml
+import yaml
+with open('nations.yaml', 'r') as file:
+    origin_mapping = yaml.safe_load(file)
+
+# Load the countries.json file
+import json
+with open('countries.json') as f:
+    countries_data = json.load(f)
+
+# """ Reading Dataframe """
+df = pd.read_csv('TravelerData.csv')
+df.rename(columns={"id": "ID",
+                   'Country' : 'DestinationCountry',
+                   "destination": "DestinationCity",
+                   "sday": "DepartureDay",
+                   "SMT": "DepartureMonthString",
+                   "syear": "DepartureYear",
+                   "duration": "Duration",
+                   "name": "CustomerName",
+                   "age": "Age",
+                   "gender": "Gender",
+                   "nationality": "Nationality",
+                   "accomtype": "AccommodationType",
+                   "accomcost": "AccommodationCost",
+                   "transtype": "TransportationType",
+                   "transcost": "TransportationCost",
+                   "season": "Season",
+                   "totalcost": "Revenue",
+                   'smonth' : 'DepartureMonth',
+                   'sdate' : 'DepartureDate'},
+          inplace=True)
+
+df['DepartureDate'] = pd.to_datetime(df['DepartureDate']).dt.date
+df['LeaveDate'] = pd.to_datetime(df['DepartureDate']) + pd.to_timedelta(df['Duration'])
+df['Nationality'] = df['Nationality'].replace({'UK' : 'British',
+                                               'Greece' : 'Greek',
+                                               'United Arab Emirates' : 'Emirati',
+                                               'Cambodia' : 'Cambodian'})
+df['DestinationCountry'] = df['DestinationCountry'].replace({'UK' : 'United Kingdom',
+                                                             'USA' : 'United States',
+                                                             'Hawaii' : 'United States'})
+df['Nationality'] = df['Nationality'].str.replace(' ', '_')
+df['DepartureCountry'] = df['Nationality'].map(origin_mapping)
+df['Nationality'] = df['Nationality'].str.replace('_', ' ')
+df['DepartureCountry'] = df['DepartureCountry'].str.replace('_', ' ')
+# Add country code
+def get_origin_code(country_name):
+    for country in countries_data:
+        if country['name']['common'] == country_name:
+            return country['cca2']
+    return None
+df['DepartureCountryCode'] = df['DepartureCountry'].apply(get_origin_code)
+df['DestinationCountryCode'] = df['DestinationCountry'].apply(get_origin_code)
+# add holidays
+import holidays
+def has_holiday(row, col):
+    country_code = str(row[col])
+    if country_code == 'None': return
+    try:
+        country_holidays = holidays.CountryHoliday(country_code)
+    except:
+        return
+    holidays_list = [country_holidays.get(date) for date in pd.date_range(row['DepartureDate'], row['LeaveDate'], freq='D')]
+    return len(holidays_list) > 0 and holidays_list != [None]
+df['DepartureHoliday'] = df.apply(lambda row: has_holiday(row, 'DepartureCountryCode'), axis=1)
+df['DestinationHoliday'] = df.apply(lambda row: has_holiday(row, 'DestinationCountryCode'), axis=1)
+print(df)
+
+
+# """ Introduction """
+title = st.markdown("<h1 style='text-align: center;font-size: 100px;'>TRAVELER DATA</h1>", unsafe_allow_html=True)
+
+
+# create a placeholder for the divider below the header  
+divider_placeholder = st.empty()
+with divider_placeholder.container():
+    st.divider()
+
+subtitle = st.header('Introduction')
+
+# """ Add Session State """
+if 'clicked' not in st.session_state:
+    st.session_state['clicked'] = False
+
+# """ Add Button to Proceed """
+placeholder = st.empty()
+with placeholder.container():
+    button_style = """
+<div style="display: flex; justify-content: center;">
+    <style>
+        .hover-button {
+            display: inline-flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            font-weight: 10000;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            margin: 0px;
+            line-height: 200;
+            color: inherit;
+            width: 15000px;
+            user-select: none;
+            background-color: rgb(19, 23, 32);
+            border: 1px solid rgba(250, 250, 250, 0.2);
+            font-size: 10000px;
+            transition-duration: 0.4s;
+        }
+        .hover-button:hover {
+            border: 1px solid red;
+            color: red;
+        }
+    </style>
+    <button class="hover-button">Center Aligned Button</button>
+</div>
+"""
+    thebutton = st.button("Let's get started")
+        # the2ndbutton = st.markdown(button_style, unsafe_allow_html=True)
+        # st.write(the2ndbutton)
+    if thebutton:
+            st.session_state.clicked = True
+
+# Change the size of the button
+
+# st.markdown("""
+# <div style="display: flex; justify-content: center;">
+#     <button style="align-self: center;">Center Aligned Button</button>
+# </div>
+# """, unsafe_allow_html=True)
+# st.markdown(button_style, unsafe_allow_html=True)
+
+
+def filtration(df:pd.DataFrame, 
+               label:str, 
+               options:list, 
+               default:str='All', 
+               all_in_options:bool=True) -> pd.DataFrame:
+    if all_in_options: 
+        if 'all' not in options:
+            options = [default, *sorted(options)]
+    choosen = st.multiselect(label=re.sub(r'(?<=\w)([A-Z])', r' \1', label).strip(),
+                             options=options,
+                             key=label)  
+    if 'all' in choosen or len(choosen) == 0: choosen = df[label].unique()
+    return df[df[label].isin(choosen)]
+
+# SIDEBAR
+if st.session_state.clicked:
+    st.sidebar.markdown("""<style>.big-font {font-size:50px !important;}</style>""", unsafe_allow_html=True)
+    st.sidebar.markdown('<p class="big-font">CATEGORIES</p>', unsafe_allow_html=True)
+    st.sidebar.caption('*Press to choose options')
+    #####st.beta_set_page_config(menu=['Home', 'About', 'Settings'])
+    
+    # print(age)
+    
+    age = st.sidebar.select_slider(label='Age Range', 
+                                   options=list(range(131)),
+                                   value=(20, 40),
+                                   key='Age')
+    df = df.loc[(df['Age'] >= age[0]) & (df['Age'] <= age[1])]
+
+# """ Add Dropdowns for Columns """
+    # Sidebar: personal information
+    with st.sidebar.expander("Personal Information"):
+        for c in ['Gender', 'Nationality']:
+            df = filtration(df=df, label=c, options=df[c].unique()) 
+        df.reset_index(inplace=True, drop=True)
+
+    # Sidebar: Departure
+    with st.sidebar.expander("Departure"):
+        for c in ['DepartureDay', 'DepartureMonth', 'DepartureYear', 'Duration']:
+            df = filtration(df=df, label=c, options=df[c].unique()) 
+
+        df.reset_index(inplace=True, drop=True)
+
+    # Sidebar: Destination
+    with st.sidebar.expander("Destination"):
+        for c in ['DestinationCity', 'DestinationCountry', 'Continent']:
+            df = filtration(df=df, label=c, options=df[c].unique()) 
+
+        df.reset_index(inplace=True, drop=True)
+
+    # Sidebar: Transportation
+    with st.sidebar.expander("Transportation and Accommodation"):
+        for c in ['TransportationType', 'AccommodationType']:
+            df = filtration(df=df, label=c, options=df[c].unique()) 
+        df.reset_index(inplace=True, drop=True)
+
+
+    # """ Delete Intro, Button and Divider """
+    divider_placeholder.empty()
+    placeholder.empty()
+    title.empty()
+    subtitle.empty()
+
+    # """ Add New Tabs """
+    tab0, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(['Revenue', "Gender", "Transportation", "Duration, Cost and Age","DestinationCity","Continent", "blabla"])
+    
+    # # """ Display Dataframe for each Tab """
+    st.title('The Frame')
+    # df.drop(['ID', 'DepartureDay', 'DepartureYear', 'DepartureMonth', 'Season', 'DepartureMonthString', 'Revenue', 'CustomerName'], axis='columns', inplace=True)
+    st.dataframe(data=df[['Age', 'Gender', 'Nationality', 'DepartureDate', 'Duration', 'DestinationCountry', 'TransportationType', 'AccommodationType', 'DepartureHoliday', 'DestinationHoliday']])
+    # st.dataframe(data=df.style.format({'DepartureYear': lambda x : f'{x}'}))
+    
+    # Data to display
+    sales = df.groupby(pd.Grouper(key='LeaveDate', freq='M')).sum()['Revenue'].to_frame().reset_index()
+    sales['RevenueLM'] = sales['Revenue'].shift(1)
+    sales['RevenueGrowthMonth'] = (sales['Revenue'] - sales['RevenueLM']) / (sales['RevenueLM'] + 1e3) * 100
+    
+    def clear_multi():
+        st.session_state.Gender = []
+        st.session_state.Age = (20, 40)
+        st.session_state.Nationality = []
+        st.session_state.DepartureDay = []
+        st.session_state.DepartureMonth = []
+        st.session_state.DepartureYear = []
+        st.session_state.Duration = []
+        st.session_state.DestinationCity = []
+        st.session_state.DestinationCountry = []
+        st.session_state.Continent = []
+        st.session_state.AccommodationType = []
+        st.session_state.TransportationType = []
+
+        return
+    reset = st.sidebar.button('Reset', on_click=clear_multi)
+    with tab0:
+        # from datetime import date
+        # from datetime import datetime
+       
+        from datetime import date
+        from datetime import datetime
+        d = st.date_input(label='Today', value=date.today())
+        d = datetime.combine(d, datetime.min.time())
+        df_one_year = sales[(sales['LeaveDate'] >= (d - pd.DateOffset(years=1))) & (sales['LeaveDate'] <= d)]
+        df_one_year['LeaveDate'] = pd.to_datetime(df_one_year['LeaveDate'])
+        col1, col2= st.columns(2)
+
+        print(df_one_year)
+        
+        with col1:
+            import plotly.graph_objects as go
+            from plotly.subplots import make_subplots
+
+            # Create subplots with 1 row and 1 column
+            fig = make_subplots(rows=1, cols=1, specs=[[{"secondary_y": True}]])
+
+            # Bar chart
+            fig.add_trace(
+                go.Bar(
+                    x=df_one_year['LeaveDate'],
+                    y=df_one_year['Revenue'],
+                    marker_color='deepskyblue',
+                    name='Revenue'
+                ),
+                row=1, col=1
+            )
+
+            fig.update_xaxes(title_text='LeaveDate', row=1, col=1)
+            fig.update_yaxes(title_text='Revenue', row=1, col=1)
+
+            # Line chart
+            fig.add_trace(
+                go.Scatter(
+                    x=df_one_year['LeaveDate'],
+                    y=df_one_year['RevenueGrowthMonth'],
+                    mode='lines+markers',
+                    marker_color='yellow', 
+                    name='Sales Revenue Last 12 Months'
+                ),
+                row=1, col=1, secondary_y=True
+            )
+
+            fig.update_yaxes(title_text='Sales Revenue Last 12 Months', row=1, col=1, secondary_y=True)
+
+            fig.update_layout(title='Revenue by Month')
+
+            st.plotly_chart(fig)
+
+            # fig, ax1 = plt.subplots()
+            # ax1.bar(df_one_year['LeaveDate'], df_one_year['Revenue'], color='blue')
+            # ax1.set_xlabel('LeaveDate')
+            # ax1.set_ylabel('Revenue')
+            # ax1.set_title('Revenue by Month')
+            # ax2 = ax1.twinx()
+            # ax2.plot(df_one_year['LeaveDate'], df_one_year['RevenueGrowthMonth'], color='red', marker='o')
+            # ax2.set_ylabel('Sales Revenue Last 12 Months')
+            # st.pyplot(fig)
+
+        with col2:
+            threshold=3000
+            r = df.groupby('DepartureCountry').sum()['Revenue'].to_frame().reset_index()
+            f = r[r['Revenue'] >= threshold]
+            f = f.append({'DepartureCountry': 'Other',
+                          'Revenue': r[r['Revenue'] < threshold]['Revenue'].sum()}, ignore_index=True)
+            fig = px.pie(f, values='Revenue', names='DepartureCountry')    
+            fig.update_layout(title='Revenue by Departure Country', showlegend=True, plot_bgcolor="white")
+            st.plotly_chart(fig)
+
+        # Add hover to the chart
+      
+        # fig = go.Figure(data=[go.Pie(labels=df['Country'], values=df['Revenue'], textinfo=None,
+        #                      insidetextorientation='radial'
+        #                     )])
+        # st.plotly_chart(fig)
+
+        # df['Percentage'] = df['Revenue'] / df['Revenue'].sum() * 100
+        # import plotly.graph_objects as go
+        # fig = go.Figure(data=[go.Pie(labels=df['Country'], values=df['Percentage'])])
+        # visibility = [fig.update_traces(visible='legendonly') if value < 1 else fig.update_traces(visible=True) for value in df['Percentage']]
+        # fig.update_layout(title='Revenue by Country', showlegend=True)
+        # st.plotly_chart(fig)
+
+    # """ Add Content Tab Gender """
+    with tab2:
+        st.title("Gender")
+        just_two = df['Gender'].value_counts()
+        fig = px.pie(values=just_two.tolist(), 
+                    names=just_two.index.tolist(),
+                    title='By gender')
+        st.plotly_chart(fig)
+
+    # display dataframe + pie transportation
+    with tab3:
+        st.title('Transporstation')
+        transtype_count = df['TransportationType'].value_counts()
+        fig = px.pie(values=transtype_count.tolist(), 
+                    names=transtype_count.index.tolist(),
+                    title='By transportation')
+        st.plotly_chart(fig)
+
+
+
+    # scatter plot + dataframe
+    with tab4:
+        st.title('Duration, Cost and Age')
+    
+        st.title('Travel Insights: Duration, Total Cost, and Age Analysis.')
+        st.markdown(' - The spread of durations and how it relates to total costs and age.')
+        st.markdown(' - Any potential patterns or clusters of data points based on the variables.')
+        st.markdown(' - The concentration or dispersion of data points in different regions of the plot, indicating relationships or trends.')
+        fig = px.scatter_3d(df, x='Duration', y='Revenue', z='Age', color='Gender')\
+                .update_layout(
+                    scene=dict(
+                    xaxis_title="Duration",
+                    yaxis_title="Total Cost",
+                    zaxis_title="Age"
+                    )
+                    )
+        st.plotly_chart(fig)
+
+    # Destination
+    with tab5:
+        
+        st.title('Destination')
+        transtype_count = df['TransportationType'].value_counts()
+        
+        result = df.groupby('DestinationCity').size().reset_index(name='count')
+        result = result.sort_values('count', ascending=True)
+        
+        import plotly.express as px
+        fig = px.bar(result,x="count", y="DestinationCity", color="DestinationCity", color_discrete_sequence=px.colors.sequential.Viridis, width=1080, height=720, text_auto= True)
+        fig.update_traces(marker_line_color='rgb(0,0,0)',
+                        marker_line_width=1.5, opacity=0.7)
+        fig.update_layout(title= {'text':'BARCHART ABOUT DESTINATIONS HAVE THE MOST VISITS','font':{'family':'Times New Roman'}},xaxis=dict(title="DestinationCity",title_font=dict(family="Times New Roman")),yaxis=dict(title="Count",title_font=dict(family="Times New Roman")),legend=dict(title="DestinationCity",title_font=dict(family="Times New Roman"),font=dict(family="Times New Roman")),font=dict(family="Times New Roman"))
+        st.plotly_chart(fig)
+
+    # Continent
+    with tab6:
+        st.title('Continent')
+        continent_count = df['Continent'].value_counts()
+        
+        result = df.groupby('Continent').size().reset_index(name='count')
+        result = result.sort_values('count', ascending=False)
+
+        import plotly.express as px
+        fig = px.bar(result,x="Continent", y="count", color="Continent", width=1080, height=720, text_auto= True, color_discrete_sequence=px.colors.qualitative.Prism)
+        fig.update_traces(marker_line_color='rgb(0,0,0)',
+                          marker_line_width=1.5, opacity=0.7)
+        fig.update_layout(title= {'text':'BARCHART ABOUT CONTINENT','font':{'family':'Times New Roman'}},xaxis=dict(title="DestinationCity",title_font=dict(family="Times New Roman")),yaxis=dict(title="Count",title_font=dict(family="Times New Roman")),legend=dict(title="DestinationCity",title_font=dict(family="Times New Roman"),font=dict(family="Times New Roman")),font=dict(family="Times New Roman"))
+        st.plotly_chart(fig)
+
+    # Scatterplot
+    # with tab7:
+        
