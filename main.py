@@ -8,8 +8,6 @@ def get_img_as_base64(file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-img = get_img_as_base64("mainpage.png")
-img1 = get_img_as_base64("image.jpg")
 img2 = get_img_as_base64("images.jpg")
 
 page_bg_img = f"""
