@@ -323,22 +323,16 @@ if st.session_state.clicked:
 #     """,
 #     unsafe_allow_html=True
 # )
-        d = st.date_input(label='Today', value=date.today())
-        st.markdown(
-    """
-    <style>
-    .input-container input {
-        height: 40px;
-        font-size: 16px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-        d = datetime.combine(d, datetime.min.time())
-        df_one_year = sales[(sales['LeaveDate'] >= (d - pd.DateOffset(years=1))) & (sales['LeaveDate'] <= d)]
-        df_one_year['LeaveDate'] = pd.to_datetime(df_one_year['LeaveDate'])
-        col1, col2= st.columns(2)
+        d, penetration = st.columns([0.9,0.1])
+        with d:
+            d = st.date_input(label='Today', value=date.today())
+            d = datetime.combine(d, datetime.min.time())
+            df_one_year = sales[(sales['LeaveDate'] >= (d - pd.DateOffset(years=1))) & (sales['LeaveDate'] <= d)]
+            df_one_year['LeaveDate'] = pd.to_datetime(df_one_year['LeaveDate'])
+        with penetration:
+            st.write()
+
+        col1, col2= st.columns([0.5, 0.5], gap="large")
 
         print(df_one_year)
         
@@ -391,15 +385,15 @@ if st.session_state.clicked:
             # ax2.set_ylabel('Sales Revenue Last 12 Months')
             # st.pyplot(fig)
 
-        # with col2:
-        #     threshold=3000
-        #     r = df.groupby('DepartureCountry').sum()['Revenue'].to_frame().reset_index()
-        #     f = r[r['Revenue'] >= threshold]
-        #     f = f.append({'DepartureCountry': 'Other',
-        #                   'Revenue': r[r['Revenue'] < threshold]['Revenue'].sum()}, ignore_index=True)
-        #     fig = px.pie(f, values='Revenue', names='DepartureCountry')    
-        #     fig.update_layout(title='Revenue by Departure Country', showlegend=True, plot_bgcolor="white")
-        #     st.plotly_chart(fig)
+        with col2:
+            threshold=3000
+            r = df.groupby('DepartureCountry').sum()['Revenue'].to_frame().reset_index()
+            f = r[r['Revenue'] >= threshold]
+            f = f.append({'DepartureCountry': 'Other',
+                          'Revenue': r[r['Revenue'] < threshold]['Revenue'].sum()}, ignore_index=True)
+            fig = px.pie(f, values='Revenue', names='DepartureCountry')    
+            fig.update_layout(title='Revenue by Departure Country', showlegend=True, plot_bgcolor="white")
+            st.plotly_chart(fig)
 
         # Add hover to the chart
       
