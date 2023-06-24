@@ -391,15 +391,15 @@ if st.session_state.clicked:
             # ax2.set_ylabel('Sales Revenue Last 12 Months')
             # st.pyplot(fig)
 
-        with col2:
-            threshold=3000
-            r = df.groupby('DepartureCountry').sum()['Revenue'].to_frame().reset_index()
-            f = r[r['Revenue'] >= threshold]
-            f = f.append({'DepartureCountry': 'Other',
-                          'Revenue': r[r['Revenue'] < threshold]['Revenue'].sum()}, ignore_index=True)
-            fig = px.pie(f, values='Revenue', names='DepartureCountry')    
-            fig.update_layout(title='Revenue by Departure Country', showlegend=True, plot_bgcolor="white")
-            st.plotly_chart(fig)
+        # with col2:
+        #     threshold=3000
+        #     r = df.groupby('DepartureCountry').sum()['Revenue'].to_frame().reset_index()
+        #     f = r[r['Revenue'] >= threshold]
+        #     f = f.append({'DepartureCountry': 'Other',
+        #                   'Revenue': r[r['Revenue'] < threshold]['Revenue'].sum()}, ignore_index=True)
+        #     fig = px.pie(f, values='Revenue', names='DepartureCountry')    
+        #     fig.update_layout(title='Revenue by Departure Country', showlegend=True, plot_bgcolor="white")
+        #     st.plotly_chart(fig)
 
         # Add hover to the chart
       
