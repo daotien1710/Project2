@@ -15,7 +15,7 @@ page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img}");
-background-size: 180%;
+background-size: 160%;
 background-position: top left;
 background-repeat: no-repeat;
 background-attachment: local;
@@ -51,8 +51,8 @@ background-color: rgba(0, 0, 0, 0);
 
 [data-testid="stSidebar"] > div:first-child {{
 background-image: url("data:image/png;base64,{img}");
-background-size: 380%;
-background-position: top left;
+background-size: 900%;
+background-position: center;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
@@ -157,7 +157,10 @@ divider_placeholder = st.empty()
 with divider_placeholder.container():
     st.divider()
 
-subtitle = st.header('Introduction')
+subtitle = st.title('Introduction')
+col1, col2= st.columns(2)
+with col1:
+    basicinformation = st.markdown('**Welcome to the company’s database. Here you will find all the necessary information you will need to study tourists’ behaviors, ranging from expenditure of services to discovering the most popular destinations and exploring spending patterns among many others. Hopefully, our data will help you understand what we are doing here as a travelling/tourism company.**')
 
 # """ Add Session State """
 if 'clicked' not in st.session_state:
@@ -230,7 +233,6 @@ def filtration(df:pd.DataFrame,
 if st.session_state.clicked:
     st.sidebar.markdown("""<style>.big-font {font-size:50px !important;}</style>""", unsafe_allow_html=True)
     st.sidebar.markdown('<p class="big-font">CATEGORIES</p>', unsafe_allow_html=True)
-    st.sidebar.caption('*Press to choose options')
     #####st.beta_set_page_config(menu=['Home', 'About', 'Settings'])
     
     # print(age)
@@ -250,23 +252,23 @@ if st.session_state.clicked:
 
     # Sidebar: Departure
     with st.sidebar.expander("Departure"):
-        for c in ['DepartureDay', 'DepartureMonth', 'DepartureYear', 'Duration']:
+        for c in ['DepartureMonth', 'DepartureYear']:
             df = filtration(df=df, label=c, options=df[c].unique()) 
 
         df.reset_index(inplace=True, drop=True)
 
     # Sidebar: Destination
     with st.sidebar.expander("Destination"):
-        for c in ['DestinationCity', 'DestinationCountry', 'Continent']:
+        for c in ['DestinationCountry', 'Continent']:
             df = filtration(df=df, label=c, options=df[c].unique()) 
 
         df.reset_index(inplace=True, drop=True)
 
-    # Sidebar: Transportation
-    with st.sidebar.expander("Transportation and Accommodation"):
-        for c in ['TransportationType', 'AccommodationType']:
-            df = filtration(df=df, label=c, options=df[c].unique()) 
-        df.reset_index(inplace=True, drop=True)
+    # # Sidebar: Transportation
+    # with st.sidebar.expander("Transportation and Accommodation"):
+    #     for c in ['TransportationType', 'AccommodationType']:
+    #         df = filtration(df=df, label=c, options=df[c].unique()) 
+    #     df.reset_index(inplace=True, drop=True)
 
 
     # """ Delete Intro, Button and Divider """
@@ -274,6 +276,7 @@ if st.session_state.clicked:
     placeholder.empty()
     title.empty()
     subtitle.empty()
+    basicinformation.empty() 
 
     # """ Add New Tabs """
     tab0, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(['Revenue', "Gender", "Transportation", "Duration, Cost and Age","DestinationCity","Continent", "blabla"])
@@ -306,12 +309,32 @@ if st.session_state.clicked:
         return
     reset = st.sidebar.button('Reset', on_click=clear_multi)
     with tab0:
-        # from datetime import date
-        # from datetime import datetime
        
         from datetime import date
         from datetime import datetime
+#         st.markdown(
+#     """
+#     <style>
+#     .input-container input {
+#         width: 400px;
+#         font-size: 16px;
+#     }
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
         d = st.date_input(label='Today', value=date.today())
+        st.markdown(
+    """
+    <style>
+    .input-container input {
+        height: 40px;
+        font-size: 16px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
         d = datetime.combine(d, datetime.min.time())
         df_one_year = sales[(sales['LeaveDate'] >= (d - pd.DateOffset(years=1))) & (sales['LeaveDate'] <= d)]
         df_one_year['LeaveDate'] = pd.to_datetime(df_one_year['LeaveDate'])
