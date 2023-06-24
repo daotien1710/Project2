@@ -323,7 +323,7 @@ if st.session_state.clicked:
 #     """,
 #     unsafe_allow_html=True
 # )
-        d, penetration = st.columns([3, 22])
+        d, penetration = st.columns([3, 25])
         with d:
             d = st.date_input(label='Today', value=date.today())
             d = datetime.combine(d, datetime.min.time())
@@ -392,7 +392,7 @@ if st.session_state.clicked:
             f = f.append({'DepartureCountry': 'Other',
                           'Revenue': r[r['Revenue'] < threshold]['Revenue'].sum()}, ignore_index=True)
             fig = px.pie(f, values='Revenue', names='DepartureCountry')    
-            fig.update_layout(title='Revenue by Departure Country', showlegend=True, plot_bgcolor="white")
+            fig.update_layout(title='\n\n Revenue by Departure Country', showlegend=True, plot_bgcolor="white")
             st.plotly_chart(fig)
 
         # Add hover to the chart
