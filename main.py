@@ -1,6 +1,7 @@
 import base64
 import streamlit as st
 st.set_page_config(layout="wide")
+import os
 
 @st.cache_data  
 def get_img_as_base64(file):
@@ -8,7 +9,7 @@ def get_img_as_base64(file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-img2 = get_img_as_base64(r"images\images.jpg")
+img2 = get_img_as_base64(os.path.join('images', "images.jpg"))
 
 page_bg_img = f"""
 <style>
@@ -75,20 +76,21 @@ import plotly.express as px
 # import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import re
+
 # import seaborn as sns
 
 # Reading yaml
 import yaml
-with open(r'data\nations.yaml', 'r') as file:
+with open(os.path.join('data', 'nations.yaml'), 'r') as file:
     origin_mapping = yaml.safe_load(file)
 
 # Load the countries.json file
 import json
-with open(r'data\countries.json') as f:
+with open(os.path.join('data', 'countries.json')) as f:
     countries_data = json.load(f)
 
 # """ Reading Dataframe """
-df = pd.read_csv(r'data\TravelerData.csv')
+df = pd.read_csv(os.path.join('data', 'TravelerData.csv'))
 df.rename(columns={"id": "ID",
                    'Country' : 'DestinationCountry',
                    "destination": "DestinationCity",
