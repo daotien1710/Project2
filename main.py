@@ -370,8 +370,8 @@ if st.session_state.clicked:
             )
 
             fig.update_yaxes(title_text='Sales Revenue Last 12 Months', row=1, col=1, secondary_y=True)
-
-            fig.update_layout(title='Revenue by Month')
+            st.markdown('**Revenue By Month**')
+            # fig.update_layout(title='Revenue by Month')
 
             st.plotly_chart(fig)
 
@@ -392,7 +392,8 @@ if st.session_state.clicked:
             f = f.append({'DepartureCountry': 'Other',
                           'Revenue': r[r['Revenue'] < threshold]['Revenue'].sum()}, ignore_index=True)
             fig = px.pie(f, values='Revenue', names='DepartureCountry')    
-            fig.update_layout(title='\n\n Revenue by Departure Country', showlegend=True, plot_bgcolor="white")
+            fig.update_layout(showlegend=True, plot_bgcolor="white")
+            st.markdown('**Revenue By Departure Country**')
             st.plotly_chart(fig)
 
         # Add hover to the chart
