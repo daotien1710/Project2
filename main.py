@@ -1,4 +1,4 @@
-import base64
+\import base64
 import streamlit as st
 st.set_page_config(layout="wide")
 
@@ -323,7 +323,7 @@ if st.session_state.clicked:
 #     """,
 #     unsafe_allow_html=True
 # )
-        d, penetration = st.columns([35,1])
+        d, penetration = st.columns([4,10])
         with d:
             d = st.date_input(label='Today', value=date.today())
             d = datetime.combine(d, datetime.min.time())
