@@ -323,7 +323,7 @@ if st.session_state.clicked:
 #     """,
 #     unsafe_allow_html=True
 # )
-        d, penetration = st.columns([3,25])
+        d, penetration = st.columns([5,20])
         with d:
             d = st.date_input(label='Today', value=date.today())
             d = datetime.combine(d, datetime.min.time())
@@ -481,3 +481,4 @@ if st.session_state.clicked:
     # Scatterplot
     # with tab7:
         
+
