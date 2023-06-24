@@ -373,7 +373,7 @@ if st.session_state.clicked:
             # fig.update_layout(title='Revenue by Month')
 
             st.plotly_chart(fig)
-            st.markdown("""<style>.big-font {font-size:10px !important;}</style>""", unsafe_allow_html=True)
+            st.markdown("""<style>.big-font {font-size:40px !important;}</style>""", unsafe_allow_html=True)
             st.markdown('<p class="big-font">Revenue By Month</p>', unsafe_allow_html=True)
             # st.markdown('**Revenue By Month**')
 
@@ -396,7 +396,7 @@ if st.session_state.clicked:
             fig = px.pie(f, values='Revenue', names='DepartureCountry')    
             fig.update_layout(showlegend=True, plot_bgcolor="white")
             st.plotly_chart(fig)
-            st.markdown("""<style>.big-font {font-size:10px !important;}</style>""", unsafe_allow_html=True)
+            st.markdown("""<style>.big-font {font-size:40px !important;}</style>""", unsafe_allow_html=True)
             st.markdown('<p class="big-font">Revenue By Departure Country</p>', unsafe_allow_html=True)
             # st.markdown('**Revenue By Departure Country**')
 
@@ -486,4 +486,3 @@ if st.session_state.clicked:
     # Scatterplot
     # with tab7:
         
-s
