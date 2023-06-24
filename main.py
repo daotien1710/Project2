@@ -332,7 +332,7 @@ if st.session_state.clicked:
         with penetration:
             st.write()
 
-        col1, col2= st.columns([0.5, 0.5], gap="large")
+        col1, col2= st.columns([0.7, 0.3], gap="large")
 
         print(df_one_year)
         
