@@ -8,7 +8,7 @@ def get_img_as_base64(file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-img2 = get_img_as_base64("images.jpg")
+img2 = get_img_as_base64(r"images\images.jpg")
 
 page_bg_img = f"""
 <style>
@@ -79,16 +79,16 @@ import re
 
 # Reading yaml
 import yaml
-with open('nations.yaml', 'r') as file:
+with open(r'data\nations.yaml', 'r') as file:
     origin_mapping = yaml.safe_load(file)
 
 # Load the countries.json file
 import json
-with open('countries.json') as f:
+with open(r'data\countries.json') as f:
     countries_data = json.load(f)
 
 # """ Reading Dataframe """
-df = pd.read_csv('TravelerData.csv')
+df = pd.read_csv(r'data\TravelerData.csv')
 df.rename(columns={"id": "ID",
                    'Country' : 'DestinationCountry',
                    "destination": "DestinationCity",
