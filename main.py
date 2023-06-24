@@ -373,7 +373,9 @@ if st.session_state.clicked:
             # fig.update_layout(title='Revenue by Month')
 
             st.plotly_chart(fig)
-            st.markdown('**Revenue By Month**')
+            st.markdown("""<style>.big-font {font-size:10px !important;}</style>""", unsafe_allow_html=True)
+            st.markdown('<p class="big-font">Revenue By Month</p>', unsafe_allow_html=True)
+            # st.markdown('**Revenue By Month**')
 
             # fig, ax1 = plt.subplots()
             # ax1.bar(df_one_year['LeaveDate'], df_one_year['Revenue'], color='blue')
@@ -394,7 +396,9 @@ if st.session_state.clicked:
             fig = px.pie(f, values='Revenue', names='DepartureCountry')    
             fig.update_layout(showlegend=True, plot_bgcolor="white")
             st.plotly_chart(fig)
-            st.markdown('**Revenue By Departure Country**')
+            st.markdown("""<style>.big-font {font-size:10px !important;}</style>""", unsafe_allow_html=True)
+            st.markdown('<p class="big-font">Revenue By Departure Country</p>', unsafe_allow_html=True)
+            # st.markdown('**Revenue By Departure Country**')
 
         # Add hover to the chart
       
@@ -482,3 +486,4 @@ if st.session_state.clicked:
     # Scatterplot
     # with tab7:
         
+s
