@@ -8,13 +8,14 @@ def get_img_as_base64(file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-
-img = get_img_as_base64("images.jpg")
+img = get_img_as_base64("mainpage.png")
+img1 = get_img_as_base64("image.jpg")
+img2 = get_img_as_base64("images.jpg")
 
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("data:image/png;base64,{img}");
+background-image: url("data:image/png;base64,{img2}");
 background-size: 160%;
 background-position: top left;
 background-repeat: no-repeat;
@@ -50,9 +51,9 @@ background-color: rgba(0, 0, 0, 0);
 }}
 
 [data-testid="stSidebar"] > div:first-child {{
-background-image: url("data:image/png;base64,{img}");
+background-image: url("data:image/png;base64,{img2}");
 background-size: 900%;
-background-position: center;
+background-position: top;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
@@ -231,6 +232,19 @@ def filtration(df:pd.DataFrame,
 
 # SIDEBAR
 if st.session_state.clicked:
+    page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+background-image: url("data:image/png;base64,{img2}");
+background-size: 160%;
+background-position: top;
+background-repeat: no-repeat;
+background-attachment: local;
+}}
+    </style>
+"""
+
+    st.markdown(page_bg_img, unsafe_allow_html=True)
     st.sidebar.markdown("""<style>.big-font {font-size:50px !important;}</style>""", unsafe_allow_html=True)
     st.sidebar.markdown('<p class="big-font">CATEGORIES</p>', unsafe_allow_html=True)
     #####st.beta_set_page_config(menu=['Home', 'About', 'Settings'])
@@ -246,7 +260,22 @@ if st.session_state.clicked:
 # """ Add Dropdowns for Columns """
     # Sidebar: personal information
     with st.sidebar.expander("Personal Information"):
-        for c in ['Gender', 'Nationality']:
+        data_df = pd.DataFrame({
+            "Gender": ["All", "Female", "Male"],
+            "Click to choose": [False, False, False],
+            }
+        )
+        st.data_editor(
+            data_df,
+            column_config={"Click to choose": 
+                           st.column_config.CheckboxColumn(
+                               default=False,
+                            )
+                            },
+                            disabled=["Gender"],
+                            hide_index=True,
+        )
+        for c in ['Nationality']:
             df = filtration(df=df, label=c, options=df[c].unique()) 
         df.reset_index(inplace=True, drop=True)
 
