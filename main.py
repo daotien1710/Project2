@@ -400,7 +400,7 @@ background-attachment: local;
             )
 
             fig.update_yaxes(title_text='Revenue Last 12 Months', row=1, col=1, secondary_y=True)
-            fig.update_layout(width=720, height=380)
+            fig.update_layout(width=720, height=450)
             # fig.update_layout(title='Revenue by Month')
 
             st.plotly_chart(fig)
