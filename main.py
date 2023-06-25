@@ -362,7 +362,7 @@ background-attachment: local;
         with penetration:
             st.write()
 
-        col1, col2= st.columns([0.8, 0.2], gap="small")
+        col1, col2= st.columns([0.82, 0.18], gap="small")
 
         # print(df_one_year)
         
@@ -394,12 +394,13 @@ background-attachment: local;
                     y=df_one_year['RevenueGrowthMonth'],
                     mode='lines+markers',
                     marker_color='yellow', 
-                    name='Sales Revenue Last 12 Months'
+                    name='Revenue Last 12 Months'
                 ),
                 row=1, col=1, secondary_y=True
             )
 
-            fig.update_yaxes(title_text='Sales Revenue Last 12 Months', row=1, col=1, secondary_y=True)
+            fig.update_yaxes(title_text='Revenue Last 12 Months', row=1, col=1, secondary_y=True)
+            fig.update_layout(width=720, height=450)
             # fig.update_layout(title='Revenue by Month')
 
             st.plotly_chart(fig)
