@@ -1,6 +1,6 @@
 import base64
 import streamlit as st
-st.set_page_config(layout="centered")
+st.set_page_config(layout="wide")
 import os
 
 @st.cache_data  
