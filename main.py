@@ -68,6 +68,17 @@ right: 2rem;
 """
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+    body {
+        zoom: 65%;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # from streamlit import config
 # config.set_option('theme', 'blue')
 
@@ -201,7 +212,7 @@ with placeholder.container():
 </div>
 """
     thebutton = st.button("Let's get started")
-        # the2ndbutton = st.markdown(button_style, unsafe_allow_html=True)
+        # the2ndbutton = st.markdocolwn(button_style, unsafe_allow_html=True)
         # st.write(the2ndbutton)
     if thebutton:
             st.session_state.clicked = True
@@ -232,6 +243,7 @@ def filtration(df:pd.DataFrame,
 
 # SIDEBAR
 if st.session_state.clicked:
+    print('dasdasdasdads')
     page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
@@ -378,7 +390,9 @@ background-attachment: local;
                 go.Bar(
                     x=df_one_year['LeaveDate'],
                     y=df_one_year['Revenue'],
-                    marker_color='deepskyblue',
+                    marker_color='rgb(155, 205, 210)',
+                    marker_line_color='black',
+                    marker_line_width=1.5,
                     name='Revenue'
                 ),
                 row=1, col=1
@@ -393,13 +407,15 @@ background-attachment: local;
                     x=df_one_year['LeaveDate'],
                     y=df_one_year['RevenueGrowthMonth'],
                     mode='lines+markers',
-                    marker_color='yellow', 
+                    marker_color='rgb(179, 19, 18)', 
                     name='Sales Revenue Last 12 Months'
                 ),
                 row=1, col=1, secondary_y=True
             )
 
             fig.update_yaxes(title_text='Sales Revenue Last 12 Months', row=1, col=1, secondary_y=True)
+            fig.update_layout(title= {'text':'REVENUE BY MONTH','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="Leave Day",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="Revenue",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="LEGENDS",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14),paper_bgcolor="white", width=1080, height=720)
+
             # fig.update_layout(title='Revenue by Month')
 
             st.plotly_chart(fig)
@@ -511,4 +527,3 @@ background-attachment: local;
 
     # Scatterplot
     # with tab7:
-        
