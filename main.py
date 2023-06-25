@@ -394,13 +394,13 @@ background-attachment: local;
                     y=df_one_year['RevenueGrowthMonth'],
                     mode='lines+markers',
                     marker_color='yellow', 
-                    name='Sales Revenue Last 12 Months'
+                    name='Revenue Last 12 Months'
                 ),
                 row=1, col=1, secondary_y=True
             )
 
             fig.update_yaxes(title_text='Revenue Last 12 Months', row=1, col=1, secondary_y=True)
-            fig.update_layout(width=720, height=480)
+            fig.update_layout(width=720, height=380)
             # fig.update_layout(title='Revenue by Month')
 
             st.plotly_chart(fig)
