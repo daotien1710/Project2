@@ -362,7 +362,7 @@ background-attachment: local;
         with penetration:
             st.write()
 
-        col1, col2= st.columns([0.55, 0.45], gap="small")
+        col1, col2= st.columns([0.59, 0.41], gap="small")
 
         # print(df_one_year)
         
