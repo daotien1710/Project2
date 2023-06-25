@@ -385,7 +385,6 @@ background-attachment: local;
 
             fig.update_xaxes(title_text='LeaveDate', row=1, col=1)
             fig.update_yaxes(title_text='Revenue', row=1, col=1)
-            fig.update_layout(width=720,height=480)
 
             # Line chart
             fig.add_trace(
