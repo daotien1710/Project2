@@ -399,8 +399,8 @@ background-attachment: local;
                 row=1, col=1, secondary_y=True
             )
 
-            fig.update_yaxes(title_text='Sales Revenue Last 12 Months', row=1, col=1, secondary_y=True)
-            fig.update_layout(title= {'font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="Leave Day",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="Revenue",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="LEGENDS",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14),paper_bgcolor="white", width=1080, height=720)
+            fig.update_yaxes(title_text='Revenue Last 12 Months', row=1, col=1, secondary_y=True)
+            fig.update_layout(width=720, height=480)
             # fig.update_layout(title='Revenue by Month')
 
             st.plotly_chart(fig)
