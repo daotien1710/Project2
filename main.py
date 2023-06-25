@@ -363,7 +363,6 @@ background-attachment: local;
             st.write()
 
         col1, col2= st.columns([0.82, 0.18], gap="small")
-
         # print(df_one_year)
         
         with col1:
