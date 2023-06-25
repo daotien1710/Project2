@@ -146,7 +146,7 @@ def has_holiday(row, col):
     return len(holidays_list) > 0 and holidays_list != [None]
 df['DepartureHoliday'] = df.apply(lambda row: has_holiday(row, 'DepartureCountryCode'), axis=1)
 df['DestinationHoliday'] = df.apply(lambda row: has_holiday(row, 'DestinationCountryCode'), axis=1)
-print(df)
+# print(df)
 
 
 # """ Introduction """
@@ -260,21 +260,22 @@ background-attachment: local;
 # """ Add Dropdowns for Columns """
     # Sidebar: personal information
     with st.sidebar.expander("Personal Information"):
-        data_df = pd.DataFrame({
-            "Gender": ["All", "Female", "Male"],
-            "Click to choose": [False, False, False],
-            }
+        """ Select Gender """
+        selectedGender = st.data_editor(
+            pd.DataFrame({
+                "Gender": ["All", "Female", "Male"],
+                "Click to choose": [False, False, False],
+                }
+            ),
+            column_config={"Click to choose": st.column_config.CheckboxColumn(default=False)},
+            disabled=["Gender"],
+            hide_index=True,
         )
-        st.data_editor(
-            data_df,
-            column_config={"Click to choose": 
-                           st.column_config.CheckboxColumn(
-                               default=False,
-                            )
-                            },
-                            disabled=["Gender"],
-                            hide_index=True,
-        )
+        selectedGender = [ele[0] for ele in selectedGender.values.tolist() if ele[1]]
+        if 'All' in selectedGender or len(selectedGender) == 0: selectedGender = df['Gender'].unique()
+        df = df[df['Gender'].isin(selectedGender)]
+        
+        """ Select Nationality """
         for c in ['Nationality']:
             df = filtration(df=df, label=c, options=df[c].unique()) 
         df.reset_index(inplace=True, drop=True)
@@ -363,7 +364,7 @@ background-attachment: local;
 
         col1, col2= st.columns([0.8, 0.2], gap="small")
 
-        print(df_one_year)
+        # print(df_one_year)
         
         with col1:
             import plotly.graph_objects as go
