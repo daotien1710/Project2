@@ -361,7 +361,7 @@ background-attachment: local;
         with penetration:
             st.write()
 
-        col1, col2= st.columns([0.8, 0.2], gap="small")
+        col1, col2= st.columns([0.5, 0.5], gap="small")
 
         print(df_one_year)
         
@@ -385,6 +385,7 @@ background-attachment: local;
 
             fig.update_xaxes(title_text='LeaveDate', row=1, col=1)
             fig.update_yaxes(title_text='Revenue', row=1, col=1)
+            fig.update_layout(width=720,height=480)
 
             # Line chart
             fig.add_trace(
