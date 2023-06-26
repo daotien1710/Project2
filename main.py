@@ -16,7 +16,7 @@ page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img1}");
-background-size: 99.5%;
+background-size: 100%;
 background-position: center;
 background-repeat: no-repeat;
 background-attachment: local;
