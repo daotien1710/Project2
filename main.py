@@ -53,7 +53,7 @@ background-color: rgba(0, 0, 0, 0);
 [data-testid="stSidebar"] > div:first-child {{
 background-image: url("data:image/png;base64,{img2}");
 background-size: 900%;
-background-position: middle;
+background-position: bottom;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
@@ -237,7 +237,7 @@ if st.session_state.clicked:
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img2}");
-background-size: 120%;
+background-size: 900%;
 background-position: top;
 background-repeat: no-repeat;
 background-attachment: local;
