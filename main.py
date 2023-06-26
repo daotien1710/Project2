@@ -16,8 +16,8 @@ page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img1}");
-background-size: 160%;
-background-position: top left;
+background-size: 100%;
+background-position: center;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
@@ -53,7 +53,7 @@ background-color: rgba(0, 0, 0, 0);
 [data-testid="stSidebar"] > div:first-child {{
 background-image: url("data:image/png;base64,{img2}");
 background-size: 900%;
-background-position: top;
+background-position: middle;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
@@ -237,7 +237,7 @@ if st.session_state.clicked:
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img2}");
-background-size: 160%;
+background-size: 120%;
 background-position: top;
 background-repeat: no-repeat;
 background-attachment: local;
