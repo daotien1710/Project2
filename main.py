@@ -9,12 +9,13 @@ def get_img_as_base64(file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-img2 = get_img_as_base64(os.path.join('images', "images.jpg"))
+img1 = get_img_as_base64(os.path.join('images', "main.PNG"))
+img2 = get_img_as_base64(os.path.join('images', "main1.PNG"))
 
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("data:image/png;base64,{img2}");
+background-image: url("data:image/png;base64,{img1}");
 background-size: 160%;
 background-position: top left;
 background-repeat: no-repeat;
