@@ -309,7 +309,7 @@ background-attachment: local;
     placeholder.empty()
     title.empty()
     subtitle.empty()
-    basicinformation.empty() 
+    # basicinformation.empty() 
 
     # """ Add New Tabs """
     tab0, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(['Revenue', "Gender", "Transportation", "Duration, Cost and Age","DestinationCity","Continent", "blabla"])
