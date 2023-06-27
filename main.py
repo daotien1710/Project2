@@ -10,7 +10,7 @@ def get_img_as_base64(file):
     return base64.b64encode(data).decode()
 
 img1 = get_img_as_base64(os.path.join('images', "main.PNG"))
-img2 = get_img_as_base64(os.path.join('images', "main1.jpg"))
+img2 = get_img_as_base64(os.path.join('images', "main1.jpeg"))
 img3 = get_img_as_base64(os.path.join('images', "side.PNG"))
 
 page_bg_img = f"""
