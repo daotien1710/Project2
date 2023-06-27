@@ -164,7 +164,7 @@ subtitle = st.title('Introduction')
 col1, col2= st.columns(2)
 with col1:
     # basicinformation = st.markdown('**Welcome to the company’s database. Here you will find all the necessary information you will need to study tourists’ behaviors, ranging from expenditure of services to discovering the most popular destinations and exploring spending patterns among many others. Hopefully, our data will help you understand what we are doing here as a travelling/tourism company.**')
-    st.markdown('<div style="text-align: justify;">Welcome to the company’s database. Here you will find all the necessary information you will need to study tourists’ behaviors, ranging from expenditure of services to discovering the most popular destinations and exploring spending patterns among many others. Hopefully, our data will help you understand what we are doing here as a travelling/tourism company.</div>', unsafe_allow_html=True)
+    basicinformation = st.markdown('<div style="text-align: justify;">Welcome to the company’s database. Here you will find all the necessary information you will need to study tourists’ behaviors, ranging from expenditure of services to discovering the most popular destinations and exploring spending patterns among many others. Hopefully, our data will help you understand what we are doing here as a travelling/tourism company.</div>', unsafe_allow_html=True)
 
 # """ Add Session State """
 if 'clicked' not in st.session_state:
@@ -309,7 +309,7 @@ background-attachment: local;
     placeholder.empty()
     title.empty()
     subtitle.empty()
-    # basicinformation.empty() 
+    basicinformation.empty() 
 
     # """ Add New Tabs """
     tab0, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(['Revenue', "Gender", "Transportation", "Duration, Cost and Age","DestinationCity","Continent", "blabla"])
@@ -522,3 +522,4 @@ background-attachment: local;
 
     # Scatterplot
     # with tab7:
+
