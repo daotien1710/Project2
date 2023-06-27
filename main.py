@@ -11,13 +11,14 @@ def get_img_as_base64(file):
 
 img1 = get_img_as_base64(os.path.join('images', "main.PNG"))
 img2 = get_img_as_base64(os.path.join('images', "main1.PNG"))
+img3 = get_img_as_base64(os.path.join('images', "side.PNG"))
 
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img1}");
-background-size: 160%;
-background-position: top left;
+background-size: 110%;
+background-position: center;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
@@ -51,9 +52,9 @@ background-color: rgba(0, 0, 0, 0);
 }}
 
 [data-testid="stSidebar"] > div:first-child {{
-background-image: url("data:image/png;base64,{img2}");
-background-size: 900%;
-background-position: top;
+background-image: url("data:image/png;base64,{img3}");
+background-size: 500%;
+background-position: middle;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
@@ -237,8 +238,8 @@ if st.session_state.clicked:
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img2}");
-background-size: 160%;
-background-position: top;
+background-size: 200%;
+background-position: top-left;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
