@@ -163,7 +163,8 @@ with divider_placeholder.container():
 subtitle = st.title('Introduction')
 col1, col2= st.columns(2)
 with col1:
-    basicinformation = st.markdown('**Welcome to the company’s database. Here you will find all the necessary information you will need to study tourists’ behaviors, ranging from expenditure of services to discovering the most popular destinations and exploring spending patterns among many others. Hopefully, our data will help you understand what we are doing here as a travelling/tourism company.**')
+    # basicinformation = st.markdown('**Welcome to the company’s database. Here you will find all the necessary information you will need to study tourists’ behaviors, ranging from expenditure of services to discovering the most popular destinations and exploring spending patterns among many others. Hopefully, our data will help you understand what we are doing here as a travelling/tourism company.**')
+    st.markdown('<div style="text-align: justify;">Welcome to the company’s database. Here you will find all the necessary information you will need to study tourists’ behaviors, ranging from expenditure of services to discovering the most popular destinations and exploring spending patterns among many others. Hopefully, our data will help you understand what we are doing here as a travelling/tourism company.</div>', unsafe_allow_html=True)
 
 # """ Add Session State """
 if 'clicked' not in st.session_state:
