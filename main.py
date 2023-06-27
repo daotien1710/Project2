@@ -444,11 +444,19 @@ background-attachment: local;
 
     # """ Add Content Tab Gender """
     with tab2:
-        st.title("Gender")
-        just_two = df['Gender'].value_counts()
-        fig = px.pie(values=just_two.tolist(), 
-                    names=just_two.index.tolist(),
-                    title='By gender')
+        from plotly import graph_objects as go
+
+        fig = go.Figure(go.Funnel(
+        y = ["Total Customers", "First Time", "Second Time", "Third Time", "Fourth Time","Sixth Time"],
+        x = [109, 95, 8, 2, 2, 2],
+        textposition = "outside",
+        textinfo = "value+percent initial",
+        opacity = 0.65, marker = {"color": ["deepskyblue", "lightsalmon", "tan", "teal", "silver"],
+        "line": {"width": [4, 2, 2, 3, 1, 1], "color": ["wheat", "wheat", "blue", "wheat", "wheat"]}},
+        connector = {"line": {"color": "royalblue", "dash": "dot", "width": 3}})
+    )
+        fig.update_layout(title= {'text':'FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="AGE",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14))
+        fig.update_layout(width=1080, height=720)
         st.plotly_chart(fig)
 
     # display dataframe + pie transportation
