@@ -389,7 +389,7 @@ background-attachment: local;
                     y=df_one_year['RevenueGrowthMonth'],
                     mode='lines+markers',
                     marker_color='rgb(179, 19, 18)', 
-                    name='Sales Revenue Last 12 Months'
+                    name='Revenue Last 12 Months'
                 ),
                 row=1, col=1, secondary_y=True
             )
