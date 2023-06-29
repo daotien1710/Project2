@@ -395,7 +395,7 @@ background-attachment: local;
             )
 
             fig.update_yaxes(title_text='Sales Revenue Last 12 Months', row=1, col=1, secondary_y=True)
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="Leave Day",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="Revenue",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="LEGENDS",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14),paper_bgcolor="white", width=930, height=620)
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="Leave Day",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="Revenue",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="LEGENDS",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14), width=930, height=620)
 
             # fig.update_layout(title='Revenue by Month')
 
@@ -420,12 +420,12 @@ background-attachment: local;
             f = f.append({'DepartureCountry': 'Other',
                           'Revenue': r[r['Revenue'] < threshold]['Revenue'].sum()}, ignore_index=True)
             fig = px.pie(f, values='Revenue', names='DepartureCountry', width=930, height=620)    
-            fig.update_layout(showlegend=True,title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="LEGENDS",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14),paper_bgcolor="white")
+            fig.update_layout(showlegend=True,title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="LEGENDS",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14))
             fig.update_traces(marker=dict(line=dict(color='black', width=1.5)))
             st.plotly_chart(fig)
             # st.markdown('*Revenue By Departure Country*')
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">REVENUE BY DEPARTURE COUNTRY</span>', unsafe_allow_html=True)
-            fig.update_layout(title= {'text':'REVENUE BY DEPARTURE COUNTRY','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="LEGENDS",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14),paper_bgcolor="white")
+            fig.update_layout(title= {'text':'REVENUE BY DEPARTURE COUNTRY','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="LEGENDS",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14))
             
         # Add hover to the chart
       
@@ -456,7 +456,7 @@ background-attachment: local;
             "line": {"width": [4, 2, 2, 3, 1, 1], "color": ["wheat", "wheat", "blue", "wheat", "wheat"]}},
             connector = {"line": {"color": "royalblue", "dash": "dot", "width": 3}})
     )
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="AGE",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14),paper_bgcolor="white", width=930, height=620)
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="AGE",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14), width=930, height=620)
             # fig.update_layout(width=930, height=620)
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE</span>', unsafe_allow_html=True)
@@ -469,7 +469,7 @@ background-attachment: local;
                         zaxis_title="Age"
                         )
                         )
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14),paper_bgcolor="white", width=930, height=620)
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14), width=930, height=620)
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">TRAVEL INSIGHTS DURATION, TOTAL COST, AND AGE ANALYSIS</span>', unsafe_allow_html=True)
             st.markdown(' - The spread of durations and how it relates to total costs and age.')
