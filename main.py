@@ -355,7 +355,7 @@ background-attachment: local;
         with penetration:
             st.write()
 
-        col1, col2= st.columns([0.5, 0.5], gap="small")
+        col1, col2= st.columns([0.55, 0.45], gap="small")
 
         # print(df_one_year)
         
@@ -389,12 +389,12 @@ background-attachment: local;
                     y=df_one_year['RevenueGrowthMonth'],
                     mode='lines+markers',
                     marker_color='rgb(179, 19, 18)', 
-                    name='Revenue Last 12 Months'
+                    name='LTM Revenue'
                 ),
                 row=1, col=1, secondary_y=True
             )
 
-            fig.update_yaxes(title_text='Revenue Last 12 Months', row=1, col=1, secondary_y=True)
+            fig.update_yaxes(title_text='LTM Revenue', row=1, col=1, secondary_y=True)
             fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="Leave Day",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="Revenue",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="LEGENDS",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14), width=660, height=440)
 
             # fig.update_layout(title='Revenue by Month')
@@ -444,7 +444,7 @@ background-attachment: local;
     # """ Add Content Tab Gender """
     with tab2:
         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 32px; font-weight: bold;">CUSTOMER TREND</span>', unsafe_allow_html=True)
-        col1, col2= st.columns([0.5, 0.5], gap="small")
+        col1, col2= st.columns([0.55, 0.45], gap="small")
         from plotly import graph_objects as go
         with col1:
             fig = go.Figure(go.Funnel(
@@ -478,7 +478,7 @@ background-attachment: local;
     # display dataframe + pie transportation
     with tab3:
         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 32px; font-weight: bold;">ACCOMMODATION/TRANSPORTATION</span>', unsafe_allow_html=True)
-        col1, col2= st.columns([0.5, 0.5], gap="small")
+        col1, col2= st.columns([0.55, 0.45], gap="small")
         with col1:
             small_data = df[['TransportationType']]
             print(small_data)
