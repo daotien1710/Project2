@@ -494,7 +494,7 @@ background-attachment: local;
     # """ Add Content Tab Gender """
     with tab2:
         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 32px; font-weight: bold;">CUSTOMER TREND</span>', unsafe_allow_html=True)
-        col1, col2= st.columns([0.56, 0.44], gap="small")
+        col1, col2= st.columns([0.6, 0.4], gap="small")
         from plotly import graph_objects as go
         with col1:
             fig = go.Figure(go.Funnel(
