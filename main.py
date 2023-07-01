@@ -1,5 +1,6 @@
 import base64
 import streamlit as st
+from streamlit import components
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 import os
 
@@ -246,7 +247,56 @@ background-attachment: local;
 }}
     </style>
 """
+    sidebar_css = """
+.sidebar .sidebar-content {
+    background-color: rgba(0,0,0,0.8);
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+    width: 200px;
+    color: white;
+}
 
+[data-testid="stSidebar"] {
+    background-color: transparent;
+}
+
+@media (max-width: 600px) {
+    .sidebar .sidebar-content {
+        position: static;
+        width: auto;
+    }
+}
+"""
+
+    content_css = """
+body {
+    background-color: #f5f5f5;
+}
+
+.sidebar .sidebar-content {
+    z-index: 1;
+}
+"""
+    components.html(
+    f'<style>{sidebar_css}</style>',
+    scrolling=False
+)
+
+    components.html(
+    f'<style>{content_css}</style>',
+    scrolling=False
+)
+def main():
+    st.sidebar.title("Sidebar")
+
+    st.title("Main Content")
+
+if __name__ == '__main__':
+    main()
+
+
+                
     st.markdown(page_bg_img, unsafe_allow_html=True)
     st.sidebar.markdown("""<style>.big-font {font-size:50px !important;}</style>""", unsafe_allow_html=True)
     st.sidebar.markdown('<p class="big-font">CATEGORIES</p>', unsafe_allow_html=True)
