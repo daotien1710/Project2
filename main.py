@@ -278,10 +278,10 @@ body {
     z-index: 1;
 }
 """
-    components.html(
-    f'<style>{sidebar_css}</style>',
-    scrolling=False
-)
+#     components.html(
+#     f'<style>{sidebar_css}</style>',
+#     scrolling=False
+# )
 
     components.html(
     f'<style>{content_css}</style>',
