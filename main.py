@@ -494,7 +494,7 @@ background-attachment: local;
     # """ Add Content Tab Gender """
     with tab2:
         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 32px; font-weight: bold;">CUSTOMER TREND</span>', unsafe_allow_html=True)
-        col1, col2= st.columns([0.6, 0.4], gap="small")
+        col1, col2= st.columns([0.55, 0.45], gap="small")
         from plotly import graph_objects as go
         with col1:
             fig = go.Figure(go.Funnel(
@@ -506,7 +506,7 @@ background-attachment: local;
             "line": {"width": [4, 2, 2, 3, 1, 1], "color": ["wheat", "wheat", "blue", "wheat", "wheat"]}},
             connector = {"line": {"color": "royalblue", "dash": "dot", "width": 3}})
     )
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="AGE",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14), width=650, height=440)
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="AGE",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14), width=670, height=440)
             # fig.update_layout(width=930, height=620)
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE</span>', unsafe_allow_html=True)
