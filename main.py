@@ -295,11 +295,11 @@ background-attachment: local;
 # # if __name__ == '__main__':
 # #     main()
 
-    st.markdown('''
-        <a href="javascript:document.getElementsByClassName('css-1cypcdb e1akgbir11')[1].click();">
-            <img src="https://static.thenounproject.com/png/3651310-200.png" style="width:50px;height:50px;"/>
-        </a>
-        ''', unsafe_allow_html=True)
+    # st.markdown('''
+    #     <a href="javascript:document.getElementsByClassName('css-1cypcdb e1akgbir11')[1].click();">
+    #         <img src="https://static.thenounproject.com/png/3651310-200.png" style="width:50px;height:50px;"/>
+    #     </a>
+    #     ''', unsafe_allow_html=True)
                 
     st.markdown(page_bg_img, unsafe_allow_html=True)
     st.sidebar.markdown("""<style>.big-font {font-size:50px !important;}</style>""", unsafe_allow_html=True)
