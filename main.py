@@ -371,7 +371,7 @@ background-attachment: local;
     # # """ Display Dataframe for each Tab """
     st.title('The Frame')
     # df.drop(['ID', 'DepartureDay', 'DepartureYear', 'DepartureMonth', 'Season', 'DepartureMonthString', 'Revenue', 'CustomerName'], axis='columns', inplace=True)
-    st.dataframe(data=df[['Age', 'Gender', 'Nationality', 'DepartureDate', 'Duration', 'DestinationCountry', 'TransportationType', 'AccommodationType']])
+    st.dataframe(data=df[['Age', 'Gender', 'Nationality', 'DepartureDate', 'Duration', 'DestinationCountry', 'TransportationType', 'AccommodationType', 'Revenue']])
     # st.dataframe(data=df.style.format({'DepartureYear': lambda x : f'{x}'}))
     
     # Data to display
