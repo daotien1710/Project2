@@ -470,12 +470,12 @@ background-attachment: local;
             f = f.append({'DepartureCountry': 'Other',
                           'Revenue': r[r['Revenue'] < threshold]['Revenue'].sum()}, ignore_index=True)
             fig = px.pie(f, values='Revenue', names='DepartureCountry', width=660, height=440)    
-            fig.update_layout(showlegend=True,title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="LEGENDS",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14))
+            fig.update_layout(showlegend=True,title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="COUNTRIES",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14))
             fig.update_traces(marker=dict(line=dict(color='black', width=1.5)))
             st.plotly_chart(fig)
             # st.markdown('*Revenue By Departure Country*')
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">REVENUE BY DEPARTURE COUNTRY</span>', unsafe_allow_html=True)
-            fig.update_layout(title= {'text':'REVENUE BY DEPARTURE COUNTRY','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="LEGENDS",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14))
+            fig.update_layout(title= {'text':'REVENUE BY DEPARTURE COUNTRY','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="COUNTRIES",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14))
             
         # Add hover to the chart
       
@@ -538,7 +538,7 @@ background-attachment: local;
 
             fig = px.pie(gg,values="count", names='TransportationType', color_discrete_sequence=['rgb(250, 112, 112)','rgb(161, 194, 152)','rgb(198, 235, 197)','rgb(251, 242, 207)','rgb(165, 241, 233)','rgb(127, 188, 210)'], width=660, height=440)
             fig.update_traces(marker_line_color='rgb(0,0,0)', marker_line_width=1.5, opacity=0.8)
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title="Transportation Type",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=13)),font=dict(family="SVN-Gilroy",size=14))
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title="TRANSPORTATION TYPE",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=13)),font=dict(family="SVN-Gilroy",size=14))
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BARCHART ILLUSTRATES TRAVELLERS CHOICE OF TRANSPORTATION</span>', unsafe_allow_html=True)
         with col2:
@@ -550,7 +550,7 @@ background-attachment: local;
 
             fig = px.pie(gg,values="count", names='AccommodationType', color_discrete_sequence=px.colors.qualitative.Prism, width=660, height=440)
             fig.update_traces(marker_line_color='rgb(0,0,0)', marker_line_width=1.5, opacity=0.8)
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title="Accommodation Type",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=13)),font=dict(family="SVN-Gilroy",size=14))
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title"ACCOMMODATION TYPE",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=13)),font=dict(family="SVN-Gilroy",size=14))
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BARCHART ILLUSTRATES TRAVELLERS CHOICE OF TRANSPORTATION</span>', unsafe_allow_html=True)
 
