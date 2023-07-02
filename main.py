@@ -498,7 +498,7 @@ background-attachment: local;
     # """ Add Content Tab Gender """
     with tab2:
         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 32px; font-weight: bold;">CUSTOMER TREND</span>', unsafe_allow_html=True)
-        col1, col2= st.columns([0.55, 0.45], gap="small")
+        col1, col2= st.columns([0.54, 0.46], gap="small")
         from plotly import graph_objects as go
         with col1:
             fig = go.Figure(go.Funnel(
@@ -532,7 +532,7 @@ background-attachment: local;
     # display dataframe + pie transportation
     with tab3:
         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 32px; font-weight: bold;">ACCOMMODATION/TRANSPORTATION</span>', unsafe_allow_html=True)
-        col1, col2= st.columns([0.55, 0.45], gap="small")
+        col1, col2= st.columns([0.54, 0.46], gap="small")
         with col1:
             small_data = df[['TransportationType']]
             print(small_data)
