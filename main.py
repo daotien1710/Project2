@@ -25,7 +25,7 @@ background-attachment: local;
 }}
 
 [id="tabs-bui3-tab-0"]{{
-background-color: rgba(0, 0, 0, 0.5);
+background-color: rgba(0, 0, 0, 0.1);
 }}
 
 [id="tabs-bui3-tab-1"]{{
