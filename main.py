@@ -29,11 +29,11 @@ background-color: rgba(0, 0, 0, 1);
 }}
 
 [id="tabs-bui3-tab-1"]{{
-background-color: rgba(0, 0, 0, 0);
+background-color: rgba(0, 0, 0, 1);
 }}
 
 [id="tabs-bui3-tab-2"]{{
-background-color: rgba(0, 0, 0, 0);
+background-color: rgba(0, 0, 0, 1);
 }}
 
 [id="tabs-bui3-tab-3"]{{
