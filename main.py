@@ -445,7 +445,7 @@ background-attachment: local;
             )
 
             fig.update_yaxes(title_text='LTM Revenue', row=1, col=1, secondary_y=True)
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="Leave Day",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="Revenue",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="LEGENDS",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14), width=660, height=440)
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="Leave Day",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="Revenue",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14), width=660, height=440)
 
             # fig.update_layout(title='Revenue by Month')
 
