@@ -296,7 +296,7 @@ background-attachment: local;
 # #     main()
 
     st.markdown('''
-        <a href="javascript:document.getElementsByClassName('css-1ydp377 edgvbvh6')[1].click();">
+        <a href="javascript:document.getElementsByClassName('css-1cypcdb e1akgbir11')[1].click();">
             <img src="https://static.thenounproject.com/png/3651310-200.png" style="width:50px;height:50px;"/>
         </a>
         ''', unsafe_allow_html=True)
