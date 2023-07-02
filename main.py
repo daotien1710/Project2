@@ -550,7 +550,7 @@ background-attachment: local;
 
             fig = px.pie(gg,values="count", names='AccommodationType', color_discrete_sequence=px.colors.qualitative.Prism, width=660, height=440)
             fig.update_traces(marker_line_color='rgb(0,0,0)', marker_line_width=1.5, opacity=0.8)
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title"ACCOMMODATION TYPE",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=13)),font=dict(family="SVN-Gilroy",size=14))
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title = "ACCOMMODATION TYPE",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=13)),font=dict(family="SVN-Gilroy",size=14))
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BARCHART ILLUSTRATES TRAVELLERS CHOICE OF TRANSPORTATION</span>', unsafe_allow_html=True)
 
