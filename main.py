@@ -434,7 +434,14 @@ if st.session_state.clicked:
                                           title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),
                               font=dict(family="SVN-Gilroy",size=14), 
                               width=500, height=500)
-
+            fig.update_layout(legend=dict(orientation="h",
+                                          entrywidth=70,
+                                          yanchor="bottom",
+                                          y=1.02,
+                                          xanchor="right",
+                                          x=1
+                                          ))
+  
             # fig.update_layout(title='Revenue by Month')
 
             st.plotly_chart(fig)
