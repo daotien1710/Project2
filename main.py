@@ -433,7 +433,7 @@ if st.session_state.clicked:
                               legend=dict(title="",
                                           title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),
                               font=dict(family="SVN-Gilroy",size=14), 
-                              width=500, height=200)
+                              width=500, height=500)
 
             # fig.update_layout(title='Revenue by Month')
 
@@ -455,7 +455,7 @@ if st.session_state.clicked:
                               yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),
                               legend=dict(title="COUNTRIES",title_font=dict(family="SVN-Gilroy",size=14),
                                           font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14),
-                              width=500, height=200)
+                              width=500, height=500)
             fig.update_traces(marker=dict(line=dict(color='black', width=1.5)))
             st.plotly_chart(fig)
             # st.markdown('*Revenue By Departure Country*')
