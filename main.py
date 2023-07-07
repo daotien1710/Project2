@@ -404,7 +404,7 @@ if st.session_state.clicked:
                     marker_color='rgb(155, 205, 210)',
                     marker_line_color='black',
                     marker_line_width=1.5,
-                    name='Revenue'
+                    name='Rev.'
                 ),
                 row=1, col=1
             )
@@ -419,7 +419,7 @@ if st.session_state.clicked:
                     y=df_one_year['RevenueGrowthMonth'],
                     mode='lines+markers',
                     marker_color='rgb(179, 19, 18)', 
-                    name='LTM Revenue'
+                    name='LTM Rev.'
                 ),
                 row=1, col=1, secondary_y=True
             )
