@@ -425,7 +425,15 @@ if st.session_state.clicked:
             )
 
             fig.update_yaxes(title_text='LTM Revenue', row=1, col=1, secondary_y=True)
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="Leave Day",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="Revenue",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14), width=660, height=440)
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
+                              xaxis=dict(title="Leave Day",
+                                         title_font=dict(family="SVN-Gilroy",size=14)),
+                              yaxis=dict(title="Revenue",
+                                         title_font=dict(family="SVN-Gilroy",size=14)),
+                              legend=dict(title="",
+                                          title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),
+                              font=dict(family="SVN-Gilroy",size=14), 
+                              width=600, height=400)
 
             # fig.update_layout(title='Revenue by Month')
 
@@ -433,15 +441,6 @@ if st.session_state.clicked:
             # st.markdown('*Revenue By Month*')
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">REVENUE BY MONTH</span>', unsafe_allow_html=True)
 
-            # fig, ax1 = plt.subplots()
-            # ax1.bar(df_one_year['LeaveDate'], df_one_year['Revenue'], color='blue')
-            # ax1.set_xlabel('LeaveDate')
-            # ax1.set_ylabel('Revenue')
-            # ax1.set_title('Revenue by Month')
-            # ax2 = ax1.twinx()
-            # ax2.plot(df_one_year['LeaveDate'], df_one_year['RevenueGrowthMonth'], color='red', marker='o')
-            # ax2.set_ylabel('Sales Revenue Last 12 Months')
-            # st.pyplot(fig)
 
         with col2:
             threshold=3000
@@ -450,7 +449,13 @@ if st.session_state.clicked:
             f = f.append({'DepartureCountry': 'Other',
                           'Revenue': r[r['Revenue'] < threshold]['Revenue'].sum()}, ignore_index=True)
             fig = px.pie(f, values='Revenue', names='DepartureCountry', width=660, height=440)    
-            fig.update_layout(showlegend=True,title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="COUNTRIES",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14))
+            fig.update_layout(showlegend=True,
+                              title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
+                              xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),
+                              yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),
+                              legend=dict(title="COUNTRIES",title_font=dict(family="SVN-Gilroy",size=14),
+                                          font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14),
+                              width=600, height=400)
             fig.update_traces(marker=dict(line=dict(color='black', width=1.5)))
             st.plotly_chart(fig)
             # st.markdown('*Revenue By Departure Country*')
