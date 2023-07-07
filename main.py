@@ -13,7 +13,7 @@ def get_img_as_base64(file):
 img1 = get_img_as_base64(os.path.join('images', "main.PNG"))
 img2 = get_img_as_base64(os.path.join('images', "main1.jpeg"))
 img3 = get_img_as_base64(os.path.join('images', "side.PNG"))
-
+#deploy
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
@@ -234,6 +234,13 @@ def filtration(df:pd.DataFrame,
     if 'all' in choosen or len(choosen) == 0: choosen = df[label].unique()
     return df[df[label].isin(choosen)]
 
+# """ Delete Intro, Button and Divider """
+    divider_placeholder.empty()
+    placeholder.empty()
+    title.empty()
+    subtitle.empty()
+    basicinformation.empty()
+
 # SIDEBAR
 if st.session_state.clicked:
     page_bg_img = f"""
@@ -247,64 +254,12 @@ background-attachment: local;
 }}
     </style>
 """
-#     sidebar_css = """
-# .sidebar .sidebar-content {
-#     background-color: rgba(0,0,0,0.8);
-#     padding: 20px;
-#     position: fixed;
-#     height: 100%;
-#     width: 200px;
-#     color: white;
-# }
-
-# [data-testid="stSidebar"] {
-#     background-color: transparent;
-# }
-
-# @media (max-width: 600px) {
-#     .sidebar .sidebar-content {
-#         position: static;
-#         width: auto;
-#     }
-# }
-# """
-
-#     content_css = """
-# body {
-#     background-color: #f5f5f5;
-# }
-
-# .sidebar .sidebar-content {
-#     z-index: 1;
-# }
-# """
-# #     components.html(
-# #     f'<style>{sidebar_css}</style>',
-# #     scrolling=False
-# # )
-
-# #     components.html(
-# #     f'<style>{content_css}</style>',
-# #     scrolling=False
-# # )
-# # def main():
-# #     st.sidebar.title("Sidebar")
-
-# #     st.title("Main Content")
-
-# # if __name__ == '__main__':
-# #     main()
-
-    # st.markdown('''
-    #     <a href="javascript:document.getElementsByClassName('css-1cypcdb e1akgbir11')[1].click();">
-    #         <img src="https://static.thenounproject.com/png/3651310-200.png" style="width:50px;height:50px;"/>
-    #     </a>
-    #     ''', unsafe_allow_html=True)
                 
     st.markdown(page_bg_img, unsafe_allow_html=True)
     st.sidebar.markdown("""<style>.big-font {font-size:50px !important;}</style>""", unsafe_allow_html=True)
     st.sidebar.markdown('<p class="big-font">CATEGORIES</p>', unsafe_allow_html=True)
     #####st.beta_set_page_config(menu=['Home', 'About', 'Settings'])
+
     
     # print(age)
     
@@ -335,6 +290,7 @@ background-attachment: local;
         """ Select Nationality """
         for c in ['Nationality']:
             df = filtration(df=df, label=c, options=df[c].unique()) 
+
         df.reset_index(inplace=True, drop=True)
 
     # Sidebar: Departure
@@ -358,12 +314,12 @@ background-attachment: local;
     #     df.reset_index(inplace=True, drop=True)
 
 
-    # """ Delete Intro, Button and Divider """
-    divider_placeholder.empty()
-    placeholder.empty()
-    title.empty()
-    subtitle.empty()
-    basicinformation.empty() 
+    # # """ Delete Intro, Button and Divider """
+    # divider_placeholder.empty()
+    # placeholder.empty()
+    # title.empty()
+    # subtitle.empty()
+    # basicinformation.empty() 
 
     # """ Add New Tabs """
     tab0, tab2, tab3 = st.tabs(['REVENUE', "CUSTOMER TREND", "TRANSPORTATION - ACCOMMODATION"])
