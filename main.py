@@ -117,6 +117,7 @@ df.rename(columns={"id": "ID",
 
 df['DepartureDate'] = pd.to_datetime(df['DepartureDate']).dt.date
 df['LeaveDate'] = pd.to_datetime(df['DepartureDate']) + pd.to_timedelta(df['Duration'])
+
 df['Nationality'] = df['Nationality'].replace({'UK' : 'British',
                                                'Greece' : 'Greek',
                                                'United Arab Emirates' : 'Emirati',
@@ -205,19 +206,9 @@ with placeholder.container():
 </div>
 """
     thebutton = st.button("Let's get started")
-        # the2ndbutton = st.markdown(button_style, unsafe_allow_html=True)
-        # st.write(the2ndbutton)
     if thebutton:
             st.session_state.clicked = True
 
-# Change the size of the button
-
-# st.markdown("""
-# <div style="display: flex; justify-content: center;">
-#     <button style="align-self: center;">Center Aligned Button</button>
-# </div>
-# """, unsafe_allow_html=True)
-# st.markdown(button_style, unsafe_allow_html=True)
 
 
 def filtration(df:pd.DataFrame, 
@@ -355,14 +346,42 @@ background-attachment: local;
         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 32px; font-weight: bold;">REVENUE</span>', unsafe_allow_html=True)
         from datetime import date
         from datetime import datetime
-        d, penetration = st.columns([4, 25])
-        with d:
-            d = st.date_input(label='Today', value=date.today())
-            d = datetime.combine(d, datetime.min.time())
-            df_one_year = sales[(sales['LeaveDate'] >= (d - pd.DateOffset(years=1))) & (sales['LeaveDate'] <= d)]
-            df_one_year['LeaveDate'] = pd.to_datetime(df_one_year['LeaveDate'])
-        with penetration:
+        # d, penetration = 
+        # with d:
+        # d = st.date_input(label='Today', value=date.today())
+        # print(d, datetime.min.time())
+        # d = datetime.combine(d, datetime.min.time())
+        
+        
+
+        # with penetration:
+        #     st.write()
+        # print(df['DepartureDate'].min().year, df['DepartureDate'].max())
+        year, e = st.columns([4,10])
+        with year:
+            year = st.slider(label="Select Year",
+                             min_value=df['DepartureDate'].min().year, 
+                             value=date.today().year, 
+                             max_value=df['DepartureDate'].max().year)
+        with e:
             st.write()
+        
+
+        # Month slider
+        month, f = st.columns([4,10])
+        with month:
+            month = st.slider(label="Select Month", 
+                              min_value=1, 
+                              value=date.today().month, 
+                              max_value=12)
+        with f: 
+            st.write()
+
+        d = datetime(year=year, month=month, day=1, hour=0, minute=0, second=0)
+        df_one_year = sales[(sales['LeaveDate'] >= (d - pd.DateOffset(years=1))) & (sales['LeaveDate'] <= d)]
+        df_one_year['LeaveDate'] = pd.to_datetime(df_one_year['LeaveDate'])
+        # Display selected year and month
+        
 
         col1, col2= st.columns([0.54, 0.46], gap="small")
 
@@ -490,10 +509,10 @@ background-attachment: local;
         col1, col2= st.columns([0.54, 0.46], gap="small")
         with col1:
             small_data = df[['TransportationType']]
-            print(small_data)
+            # print(small_data)
 
             gg = small_data.groupby(['TransportationType']).size().reset_index(name='count')
-            print(gg)
+            # print(gg)
 
             fig = px.pie(gg,values="count", names='TransportationType', color_discrete_sequence=['rgb(250, 112, 112)','rgb(161, 194, 152)','rgb(198, 235, 197)','rgb(251, 242, 207)','rgb(165, 241, 233)','rgb(127, 188, 210)'], width=660, height=440)
             fig.update_traces(marker_line_color='rgb(0,0,0)', marker_line_width=1.5, opacity=0.8)
@@ -502,10 +521,10 @@ background-attachment: local;
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BARCHART ILLUSTRATES TRAVELLERS CHOICE OF TRANSPORTATION</span>', unsafe_allow_html=True)
         with col2:
             small_data = df[['AccommodationType']]
-            print(small_data)
+            # print(small_data)
 
             gg = small_data.groupby(['AccommodationType']).size().reset_index(name='count')
-            print(gg)
+            # print(gg)
 
             fig = px.pie(gg,values="count", names='AccommodationType', color_discrete_sequence=px.colors.qualitative.Prism, width=660, height=440)
             fig.update_traces(marker_line_color='rgb(0,0,0)', marker_line_width=1.5, opacity=0.8)
