@@ -234,13 +234,6 @@ def filtration(df:pd.DataFrame,
     if 'all' in choosen or len(choosen) == 0: choosen = df[label].unique()
     return df[df[label].isin(choosen)]
 
-# """ Delete Intro, Button and Divider """
-    divider_placeholder.empty()
-    placeholder.empty()
-    title.empty()
-    subtitle.empty()
-    basicinformation.empty()
-
 # SIDEBAR
 if st.session_state.clicked:
     page_bg_img = f"""
@@ -260,7 +253,13 @@ background-attachment: local;
     st.sidebar.markdown('<p class="big-font">CATEGORIES</p>', unsafe_allow_html=True)
     #####st.beta_set_page_config(menu=['Home', 'About', 'Settings'])
 
-    
+    # """ Delete Intro, Button and Divider """
+    divider_placeholder.empty()
+    placeholder.empty()
+    title.empty()
+    subtitle.empty()
+    basicinformation.empty()
+
     # print(age)
     
     age = st.sidebar.select_slider(label='Age Range', 
