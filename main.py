@@ -438,7 +438,7 @@ if st.session_state.clicked:
                                           entrywidth=70,
                                           yanchor="bottom",
                                           y=1.02,
-                                          xanchor="center",
+                                          xanchor="left",
                                           x=1
                                           ))
   
