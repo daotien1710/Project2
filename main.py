@@ -385,7 +385,7 @@ if st.session_state.clicked:
         # Display selected year and month
         
 
-        col1, col2= st.columns([0.54, 0.46], gap="small")
+        col1, col2= st.columns([0.53, 0.47], gap="small")
 
         # print(df_one_year)
         
