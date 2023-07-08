@@ -334,7 +334,7 @@ if st.session_state.clicked:
     sales['RevenueGrowthMonth'] = (sales['Revenue'] - sales['RevenueLM']) / (sales['RevenueLM'] + 1e3) * 100
     
     def clear_multi():
-        st.session_state.Gender = ['False']
+        st.session_state.Gender = ['Default']
         st.session_state.Age = (20, 40)
         st.session_state.Nationality = []
         st.session_state.DepartureDay = []
