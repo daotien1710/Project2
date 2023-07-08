@@ -283,7 +283,7 @@ if st.session_state.clicked:
         df = df[df['Gender'].isin(selectedGender)]
         # df = filtration(df=df, label=selectedGender) 
         
-        # df.reset_index(inplace=True, drop=True)
+        df.reset_index(inplace=True, drop=True)
 
         """ Select Nationality """
         for c in ['Nationality']:
@@ -334,7 +334,7 @@ if st.session_state.clicked:
     sales['RevenueGrowthMonth'] = (sales['Revenue'] - sales['RevenueLM']) / (sales['RevenueLM'] + 1e3) * 100
     
     def clear_multi():
-        st.session_state.Gender = []
+        st.session_state.Gender = ['All', 'True', 'False']
         st.session_state.Age = (20, 40)
         st.session_state.Nationality = []
         st.session_state.DepartureDay = []
