@@ -447,7 +447,11 @@ if st.session_state.clicked:
             st.plotly_chart(fig)
             # st.markdown('*Revenue By Month*')
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">REVENUE BY MONTH</span>', unsafe_allow_html=True)
+            # txt = st.text_area('Text to analyze', '''
+            #    The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.
 
+            #     ''')
+            st.write('The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.')
 
         with col2:
             threshold=3000
@@ -468,7 +472,7 @@ if st.session_state.clicked:
             # st.markdown('*Revenue By Departure Country*')
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">REVENUE BY DEPARTURE COUNTRY</span>', unsafe_allow_html=True)
             fig.update_layout(title= {'text':'REVENUE BY DEPARTURE COUNTRY','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="COUNTRIES",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14))
-            
+            st.write('The following pie chart displays different shares of departure revenue that top tourist countries receive throughout the observed period.')
         # Add hover to the chart
       
         # fig = go.Figure(data=[go.Pie(labels=df['Country'], values=df['Revenue'], textinfo=None,
