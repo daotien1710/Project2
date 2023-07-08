@@ -433,7 +433,7 @@ if st.session_state.clicked:
                               legend=dict(title="",
                                           title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),
                               font=dict(family="SVN-Gilroy",size=14), 
-                              width=470, height=500)
+                              width=500, height=500)
             fig.update_layout(legend=dict(orientation="h",
                                           entrywidth=80,
                                           yanchor="bottom",
