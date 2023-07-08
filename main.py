@@ -538,7 +538,7 @@ if st.session_state.clicked:
             fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title = "ACCOMMODATION TYPE",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=13)),font=dict(family="SVN-Gilroy",size=14))
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BARCHART ILLUSTRATES TRAVELLERS CHOICE OF TRANSPORTATION</span>', unsafe_allow_html=True)
-    st.write('The following pie chart illustrates various modes of transportation/types of accommodation and their popularity among tourists/travelers.')
+        st.write('The following pie chart illustrates various modes of transportation/types of accommodation and their popularity among tourists/travelers.')
 #     with tab0:
        
 #         from datetime import date
