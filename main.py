@@ -384,6 +384,8 @@ if st.session_state.clicked:
         d = datetime(year=year, month=month, day=1, hour=0, minute=0, second=0)
         df_one_year = sales[(sales['LeaveDate'] >= (d - pd.DateOffset(years=1))) & (sales['LeaveDate'] <= d)]
         df_one_year['LeaveDate'] = pd.to_datetime(df_one_year['LeaveDate'])
+
+        st.caption('(These two elements are used for the "Revenue By Month" graph)')
         # Display selected year and month
         
 
