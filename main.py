@@ -286,12 +286,12 @@ if st.session_state.clicked:
 
         df.reset_index(inplace=True, drop=True)
 
-    # Sidebar: Departure
-    with st.sidebar.expander("Departure"):
-        for c in ['DepartureMonth', 'DepartureYear']:
-            df = filtration(df=df, label=c, options=df[c].unique()) 
+    # # Sidebar: Departure
+    # with st.sidebar.expander("Departure"):
+    #     for c in ['DepartureMonth', 'DepartureYear']:
+    #         df = filtration(df=df, label=c, options=df[c].unique()) 
 
-        df.reset_index(inplace=True, drop=True)
+    #     df.reset_index(inplace=True, drop=True)
 
     # Sidebar: Destination
     with st.sidebar.expander("Destination"):
@@ -360,6 +360,7 @@ if st.session_state.clicked:
         # with penetration:
         #     st.write()
         # print(df['DepartureDate'].min().year, df['DepartureDate'].max())
+
         year, e = st.columns([4,5])
         with year:
             year = st.slider(label="Select Year",
