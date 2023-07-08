@@ -447,11 +447,11 @@ if st.session_state.clicked:
             st.plotly_chart(fig)
             # st.markdown('*Revenue By Month*')
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">REVENUE BY MONTH</span>', unsafe_allow_html=True)
-            # txt = st.text_area('Text to analyze', '''
-            #    The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.
+            txt = st.text_area('', '''
+               The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.
 
-            #     ''')
-            st.write('The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.')
+                ''')
+            # st.write('The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.')
 
         with col2:
             threshold=3000
