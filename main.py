@@ -1,7 +1,8 @@
 # import base64
 import streamlit as st
 from streamlit import components
-st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(layout="wide") 
+                #    initial_sidebar_state="collapsed")
 import os
 
 # @st.cache_data  
