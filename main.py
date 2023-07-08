@@ -322,7 +322,7 @@ if st.session_state.clicked:
     # # """ Display Dataframe for each Tab """
     st.title('The Frame')
     # df.drop(['ID', 'DepartureDay', 'DepartureYear', 'DepartureMonth', 'Season', 'DepartureMonthString', 'Revenue', 'CustomerName'], axis='columns', inplace=True)
-    st.dataframe(data=df[['Age', 'Gender', 'Nationality', 'DepartureDate', 'Duration', 'DestinationCountry', 'TransportationType', 'AccommodationType', 'Revenue']], use_container_width=True)
+    st.dataframe(data=df[['Age', 'Gender', 'Nationality', 'DepartureDate', 'Duration', 'DestinationCountry', 'TransportationType', 'AccommodationType', 'Revenue']], width=1500, use_container_width=True)
     # st.dataframe(data=df.style.format({'DepartureYear': lambda x : f'{x}'}))
     
     # Data to display
