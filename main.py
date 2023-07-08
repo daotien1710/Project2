@@ -280,7 +280,7 @@ if st.session_state.clicked:
         if 'All' in selectedGender or len(selectedGender) == 0: selectedGender = df['Gender'].unique()
         df = df[df['Gender'].isin(selectedGender)]
         
-        # df.reset_index(inplace=True, drop=True)
+        df.reset_index(inplace=True, drop=True)
 
         """ Select Nationality """
         for c in ['Nationality']:
@@ -288,12 +288,12 @@ if st.session_state.clicked:
 
         df.reset_index(inplace=True, drop=True)
 
-    # Sidebar: Departure
-    with st.sidebar.expander("Departure"):
-        for c in ['DepartureMonth', 'DepartureYear']:
-            df = filtration(df=df, label=c, options=df[c].unique()) 
+    # # Sidebar: Departure
+    # with st.sidebar.expander("Departure"):
+    #     for c in ['DepartureMonth', 'DepartureYear']:
+    #         df = filtration(df=df, label=c, options=df[c].unique()) 
 
-        df.reset_index(inplace=True, drop=True)
+    #     df.reset_index(inplace=True, drop=True)
 
     # Sidebar: Destination
     with st.sidebar.expander("Destination"):
@@ -322,7 +322,7 @@ if st.session_state.clicked:
     # # """ Display Dataframe for each Tab """
     st.title('The Frame')
     # df.drop(['ID', 'DepartureDay', 'DepartureYear', 'DepartureMonth', 'Season', 'DepartureMonthString', 'Revenue', 'CustomerName'], axis='columns', inplace=True)
-    st.dataframe(data=df[['Age', 'Gender', 'Nationality', 'DepartureDate', 'Duration', 'DestinationCountry', 'TransportationType', 'AccommodationType', 'Revenue']])
+    st.dataframe(data=df[['Age', 'Gender', 'Nationality', 'DepartureDate', 'Duration', 'DestinationCountry', 'TransportationType', 'AccommodationType', 'Revenue']], use_container_width=True)
     # st.dataframe(data=df.style.format({'DepartureYear': lambda x : f'{x}'}))
     
     # Data to display
