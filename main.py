@@ -276,14 +276,11 @@ if st.session_state.clicked:
             disabled=["Gender"],
             hide_index=True,
         )
-        df.reset_index(inplace=True, drop=True)
-
         selectedGender = [ele[0] for ele in selectedGender.values.tolist() if ele[1]]
         if 'All' in selectedGender or len(selectedGender) == 0: selectedGender = df['Gender'].unique()
         df = df[df['Gender'].isin(selectedGender)]
-        # df = filtration(df=df, label=selectedGender) 
         
-        df.reset_index(inplace=True, drop=True)
+        # df.reset_index(inplace=True, drop=True)
 
         """ Select Nationality """
         for c in ['Nationality']:
@@ -291,12 +288,12 @@ if st.session_state.clicked:
 
         df.reset_index(inplace=True, drop=True)
 
-    # # Sidebar: Departure
-    # with st.sidebar.expander("Departure"):
-    #     for c in ['DepartureMonth', 'DepartureYear']:
-    #         df = filtration(df=df, label=c, options=df[c].unique()) 
+    # Sidebar: Departure
+    with st.sidebar.expander("Departure"):
+        for c in ['DepartureMonth', 'DepartureYear']:
+            df = filtration(df=df, label=c, options=df[c].unique()) 
 
-    #     df.reset_index(inplace=True, drop=True)
+        df.reset_index(inplace=True, drop=True)
 
     # Sidebar: Destination
     with st.sidebar.expander("Destination"):
@@ -334,7 +331,7 @@ if st.session_state.clicked:
     sales['RevenueGrowthMonth'] = (sales['Revenue'] - sales['RevenueLM']) / (sales['RevenueLM'] + 1e3) * 100
     
     def clear_multi():
-        st.session_state.Gender = ['Default']
+        st.session_state.Gender = []
         st.session_state.Age = (20, 40)
         st.session_state.Nationality = []
         st.session_state.DepartureDay = []
