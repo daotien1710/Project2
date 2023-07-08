@@ -490,7 +490,12 @@ if st.session_state.clicked:
             "line": {"width": [4, 2, 2, 3, 1, 1], "color": ["wheat", "wheat", "blue", "wheat", "wheat"]}},
             connector = {"line": {"color": "royalblue", "dash": "dot", "width": 3}})
     )
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="AGE",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14), width=670, height=440)
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
+                              xaxis=dict(title="AGE",title_font=dict(family="SVN-Gilroy",size=14)),
+                              yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),
+                              legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),
+                                          font=dict(family="SVN-Gilroy",size=14)),
+                              width=500, height=500)
             # fig.update_layout(width=930, height=620)
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE</span>', unsafe_allow_html=True)
@@ -503,7 +508,10 @@ if st.session_state.clicked:
                         zaxis_title="Age"
                         )
                         )
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14), width=660, height=440)
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
+                              legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),
+                              font=dict(family="SVN-Gilroy",size=14), 
+                              width=500, height=500)
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">TRAVEL INSIGHTS DURATION, TOTAL COST, AND AGE ANALYSIS</span>', unsafe_allow_html=True)
             # st.markdown(' - The spread of durations and how it relates to total costs and age.')
@@ -515,30 +523,70 @@ if st.session_state.clicked:
         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 32px; font-weight: bold;">ACCOMMODATION/TRANSPORTATION</span>', unsafe_allow_html=True)
         col1, col2= st.columns([0.54, 0.46], gap="small")
         with col1:
-            small_data = df[['TransportationType']]
-            # print(small_data)
-
-            gg = small_data.groupby(['TransportationType']).size().reset_index(name='count')
-            # print(gg)
-
-            fig = px.pie(gg,values="count", names='TransportationType', color_discrete_sequence=['rgb(250, 112, 112)','rgb(161, 194, 152)','rgb(198, 235, 197)','rgb(251, 242, 207)','rgb(165, 241, 233)','rgb(127, 188, 210)'], width=660, height=440)
-            fig.update_traces(marker_line_color='rgb(0,0,0)', marker_line_width=1.5, opacity=0.8)
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title="TRANSPORTATION TYPE",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=13)),font=dict(family="SVN-Gilroy",size=14))
+            fig = px.box(df, x='AccommodationType', y='AccommodationCost', color='AccommodationType', color_discrete_sequence=px.colors.qualitative.Prism, width=930, height=620)
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
+                              xaxis=dict(title="<b>TYPES OF ACCOMMODATION</b>",title_font=dict(family="SVN-Gilroy",size=14)),
+                              yaxis=dict(title="<b>COST OF ACCOMMODATION</b>",title_font=dict(family="SVN-Gilroy",size=14)),
+                              legend=dict(title="<b>GENDER</b>",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),
+                              font=dict(family="SVN-Gilroy",size=14),
+                              paper_bgcolor='rgba(255, 255, 255, 0)',
+                              plot_bgcolor='rgba(255, 255, 255, 0.1)',
+                              width=500, height=500)
+            fig.update_traces(showlegend=False)
             st.plotly_chart(fig)
-            st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BARCHART ILLUSTRATES TRAVELLERS CHOICE OF TRANSPORTATION</span>', unsafe_allow_html=True)
+            st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BOXPLOT ILLUSTRATES THE PRICE OF ACCOMMODATIONS</span>', unsafe_allow_html=True)
+        
         with col2:
-            small_data = df[['AccommodationType']]
-            # print(small_data)
-
-            gg = small_data.groupby(['AccommodationType']).size().reset_index(name='count')
-            # print(gg)
-
-            fig = px.pie(gg,values="count", names='AccommodationType', color_discrete_sequence=px.colors.qualitative.Prism, width=660, height=440)
-            fig.update_traces(marker_line_color='rgb(0,0,0)', marker_line_width=1.5, opacity=0.8)
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title = "ACCOMMODATION TYPE",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=13)),font=dict(family="SVN-Gilroy",size=14))
+            fig = px.box(df, x='TransportationType', y='TransportationCost', color='TransportationType', color_discrete_sequence=px.colors.qualitative.Prism, width=930, height=620)
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
+                              xaxis=dict(title="<b>TYPES OF TRANSPORTATION</b>",title_font=dict(family="SVN-Gilroy", size=14)),
+                              yaxis=dict(title="<b>COST OF TRANSPORTATION</b>",title_font=dict(family="SVN-Gilroy",size=14)),
+                              legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy", size=14),font=dict(family="SVN-Gilroy",size=14)),
+                              font=dict(family="SVN-Gilroy",size=14),paper_bgcolor='rgba(255, 255, 255, 0)',plot_bgcolor='rgba(255, 255, 255, 0.1)',
+                              width=500, height=500)
+            fig.update_traces(showlegend=False)
             st.plotly_chart(fig)
-            st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BARCHART ILLUSTRATES TRAVELLERS CHOICE OF TRANSPORTATION</span>', unsafe_allow_html=True)
+            st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BOXPLOT ILLUSTRATES THE PRICE OF TRANSPORTATIONS</span>', unsafe_allow_html=True)
         st.write('The following pie chart illustrates various modes of transportation/types of accommodation and their popularity among tourists/travelers.')
+
+
+        # with col1:
+        #     small_data = df[['TransportationType']]
+        #     # print(small_data)
+
+        #     gg = small_data.groupby(['TransportationType']).size().reset_index(name='count')
+        #     # print(gg)
+
+        #     fig = px.pie(gg,values="count", names='TransportationType', color_discrete_sequence=['rgb(250, 112, 112)','rgb(161, 194, 152)','rgb(198, 235, 197)','rgb(251, 242, 207)','rgb(165, 241, 233)','rgb(127, 188, 210)'], width=660, height=440)
+        #     fig.update_traces(marker_line_color='rgb(0,0,0)', marker_line_width=1.5, opacity=0.8)
+        #     fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
+        #                       legend=dict(title="TRANSPORTATION TYPE",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=13)),
+        #                       font=dict(family="SVN-Gilroy",size=14),
+        #                       width=500, height=500)
+        #     st.plotly_chart(fig)
+        #     st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BARCHART ILLUSTRATES TRAVELLERS CHOICE OF TRANSPORTATION</span>', unsafe_allow_html=True)
+        # with col2:
+        #     small_data = df[['AccommodationType']]
+        #     # print(small_data)
+
+        #     gg = small_data.groupby(['AccommodationType']).size().reset_index(name='count')
+        #     # print(gg)
+
+        #     fig = px.pie(gg,values="count", names='AccommodationType', color_discrete_sequence=px.colors.qualitative.Prism, width=660, height=440)
+        #     fig.update_traces(marker_line_color='rgb(0,0,0)', marker_line_width=1.5, opacity=0.8)
+        #     fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
+        #                       legend=dict(title = "ACCOMMODATION TYPE",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=13)),
+        #                       font=dict(family="SVN-Gilroy",size=14),
+        #                       width=500, height=500)
+        #     st.plotly_chart(fig)
+        #     st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BARCHART ILLUSTRATES TRAVELLERS CHOICE OF TRANSPORTATION</span>', unsafe_allow_html=True)
+        # st.write('The following pie chart illustrates various modes of transportation/types of accommodation and their popularity among tourists/travelers.')
+
+
+
+
+
+
 #     with tab0:
        
 #         from datetime import date
