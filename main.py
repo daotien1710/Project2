@@ -276,11 +276,14 @@ if st.session_state.clicked:
             disabled=["Gender"],
             hide_index=True,
         )
+        df.reset_index(inplace=True, drop=True)
+
         selectedGender = [ele[0] for ele in selectedGender.values.tolist() if ele[1]]
         if 'All' in selectedGender or len(selectedGender) == 0: selectedGender = df['Gender'].unique()
         df = df[df['Gender'].isin(selectedGender)]
-        df = filtration(df=df, label=selectedGender) 
-        df.reset_index(inplace=True, drop=True)
+        # df = filtration(df=df, label=selectedGender) 
+        
+        # df.reset_index(inplace=True, drop=True)
 
         """ Select Nationality """
         for c in ['Nationality']:
