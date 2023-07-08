@@ -359,7 +359,7 @@ if st.session_state.clicked:
         # with penetration:
         #     st.write()
         # print(df['DepartureDate'].min().year, df['DepartureDate'].max())
-        year, e = st.columns([4,8])
+        year, e = st.columns([4,5])
         with year:
             year = st.slider(label="Select Year",
                              min_value=df['DepartureDate'].min().year, 
@@ -370,7 +370,7 @@ if st.session_state.clicked:
         
 
         # Month slider
-        month, f = st.columns([4,8])
+        month, f = st.columns([4,5])
         with month:
             month = st.slider(label="Select Month", 
                               min_value=1, 
