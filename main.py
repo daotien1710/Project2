@@ -506,9 +506,9 @@ if st.session_state.clicked:
             fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14), width=660, height=440)
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">TRAVEL INSIGHTS DURATION, TOTAL COST, AND AGE ANALYSIS</span>', unsafe_allow_html=True)
-            st.markdown(' - The spread of durations and how it relates to total costs and age.')
-            st.markdown(' - Any potential patterns or clusters of data points based on the variables.')
-            st.markdown(' - The concentration or dispersion of data points in different regions of the plot, indicating relationships or trends.')
+            # st.markdown(' - The spread of durations and how it relates to total costs and age.')
+            # st.markdown(' - Any potential patterns or clusters of data points based on the variables.')
+            # st.markdown(' - The concentration or dispersion of data points in different regions of the plot, indicating relationships or trends.')
             st.write('This 3D plot provides insight into the spread of durations and how it relates to total cost and ages. Here we can observe potential patterns, indicated by the plot’s many clusters of data points.')
     # display dataframe + pie transportation
     with tab3:
