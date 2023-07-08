@@ -447,11 +447,11 @@ if st.session_state.clicked:
             st.plotly_chart(fig)
             # st.markdown('*Revenue By Month*')
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">REVENUE BY MONTH</span>', unsafe_allow_html=True)
-            txt = st.text_area('', '''
-               The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.
+            # txt = st.text_area('', '''
+            #    The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.
 
-                ''')
-            # st.write('The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.')
+            #     ''')
+            st.write('The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.')
 
         with col2:
             threshold=3000
@@ -473,19 +473,7 @@ if st.session_state.clicked:
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">REVENUE BY DEPARTURE COUNTRY</span>', unsafe_allow_html=True)
             fig.update_layout(title= {'text':'REVENUE BY DEPARTURE COUNTRY','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="COUNTRIES",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14))
             st.write('The following pie chart displays different shares of departure revenue that top tourist countries receive throughout the observed period.')
-        # Add hover to the chart
-      
-        # fig = go.Figure(data=[go.Pie(labels=df['Country'], values=df['Revenue'], textinfo=None,
-        #                      insidetextorientation='radial'
-        #                     )])
-        # st.plotly_chart(fig)
-
-        # df['Percentage'] = df['Revenue'] / df['Revenue'].sum() * 100
-        # import plotly.graph_objects as go
-        # fig = go.Figure(data=[go.Pie(labels=df['Country'], values=df['Percentage'])])
-        # visibility = [fig.update_traces(visible='legendonly') if value < 1 else fig.update_traces(visible=True) for value in df['Percentage']]
-        # fig.update_layout(title='Revenue by Country', showlegend=True)
-        # st.plotly_chart(fig)
+       
 
     # """ Add Content Tab Gender """
     with tab2:
@@ -521,6 +509,7 @@ if st.session_state.clicked:
             st.markdown(' - The spread of durations and how it relates to total costs and age.')
             st.markdown(' - Any potential patterns or clusters of data points based on the variables.')
             st.markdown(' - The concentration or dispersion of data points in different regions of the plot, indicating relationships or trends.')
+            st.write('This 3D plot provides insight into the spread of durations and how it relates to total cost and ages. Here we can observe potential patterns, indicated by the plot’s many clusters of data points.')
     # display dataframe + pie transportation
     with tab3:
         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 32px; font-weight: bold;">ACCOMMODATION/TRANSPORTATION</span>', unsafe_allow_html=True)
@@ -549,7 +538,7 @@ if st.session_state.clicked:
             fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},legend=dict(title = "ACCOMMODATION TYPE",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=13)),font=dict(family="SVN-Gilroy",size=14))
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BARCHART ILLUSTRATES TRAVELLERS CHOICE OF TRANSPORTATION</span>', unsafe_allow_html=True)
-
+    st.write('The following pie chart illustrates various modes of transportation/types of accommodation and their popularity among tourists/travelers.')
 #     with tab0:
        
 #         from datetime import date
