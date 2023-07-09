@@ -6,7 +6,6 @@ st.set_page_config(layout="wide")
 import os
 import plotly.express as px
 import pandas as pd
-my_data = pd.read_csv('C:\Users\mynhi\Desktop\Code\Python\Project2\data')
 
 @st.cache_data  
 def get_img_as_base64(file):
@@ -545,7 +544,7 @@ background-attachment: local;
     #         st.plotly_chart(fig)
     #         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE</span>', unsafe_allow_html=True)
         with col2:
-            fig = px.scatter(my_data, x='age', y='totalcost',color="gender", symbol="gender",width=1080, height=720, marginal_x="histogram", marginal_y="histogram")
+            fig = px.scatter(df, x='age', y='totalcost',color="gender", symbol="gender",width=1080, height=720, marginal_x="histogram", marginal_y="histogram")
             fig.update_layout(title= {'text':'<b>TRAVEL INSIGHTS TOTAL COST AND AGE ANALYSIS</b>','font':{'family':'SVN-Gilroy'}},xaxis=dict(title="<b>AGE</b>",title_font=dict(family="SVN-Gilroy")),yaxis=dict(title="<b>TOTAL COST</b>",title_font=dict(family="SVN-Gilroy")),legend=dict(title="COUNTRY",title_font=dict(family="SVN-Gilroy"),font=dict(family="SVN-Gilroy")),font=dict(family="SVN-Gilroy"),paper_bgcolor="white")
             fig.update_traces(marker=dict(size=7, line=dict(width=1,color='DarkSlateGrey')),selector=dict(mode='markers'))
             fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
