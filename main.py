@@ -490,7 +490,7 @@ background-attachment: local;
             st.write('**The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.**')
 
         with col2:
-            threshold=3300
+            threshold=3400
             r = df.groupby('DepartureCountry').sum()['Revenue'].to_frame().reset_index()
             f = r[r['Revenue'] >= threshold]
             f = f.append({'DepartureCountry': 'Other',
