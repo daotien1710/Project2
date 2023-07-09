@@ -281,7 +281,7 @@ background-attachment: local;
 
 # """ Add Dropdowns for Columns """
     # Sidebar: personal information
-    with st.sidebar.expander("Personal Information"):
+    with st.sidebar.expander("**Personal Information**"):
         """ Select Gender """
         selectedGender = st.data_editor(
             pd.DataFrame({
@@ -313,7 +313,7 @@ background-attachment: local;
     #     df.reset_index(inplace=True, drop=True)
 
     # Sidebar: Destination
-    with st.sidebar.expander("Destination"):
+    with st.sidebar.expander("**Destination**"):
         for c in ['DestinationCountry', 'Continent']:
             df = filtration(df=df, label=c, options=df[c].unique()) 
 
