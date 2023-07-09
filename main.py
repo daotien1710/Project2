@@ -393,10 +393,14 @@ background-attachment: local;
 
         year, e = st.columns([4,5])
         with year:
+            min_year = df['DepartureDate'].min().year
+            max_year = df['DepartureDate'].max().year
+            if min_year == max_year: min_year -= 1
+
             year = st.slider(label="**SELECT YEAR**",
-                             min_value=df['DepartureDate'].min().year, 
+                             min_value=min_year, 
                              value=date.today().year, 
-                             max_value=df['DepartureDate'].max().year)
+                             max_value=max_year)
         with e:
             st.write()
         
