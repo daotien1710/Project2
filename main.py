@@ -542,7 +542,8 @@ background-attachment: local;
             # fig.update_layout(width=930, height=620)
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE</span>', unsafe_allow_html=True)
-    #         fig = go.Figure(go.Funnel(
+            st.write('**The provided funnel chart depicts the customers’ demographic over how frequently they use the service. A total of 100 customers were observed.**')     
+    #  fig = go.Figure(go.Funnel(
     #         y = ["Total Customers", "First Time", "Second Time", "Third Time", "Fourth Time","Sixth Time"],
     #         x = [109, 95, 8, 2, 2, 2],
     #         textposition = "outside",
