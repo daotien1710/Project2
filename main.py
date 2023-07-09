@@ -273,7 +273,7 @@ background-attachment: local;
 
     # print(age)
     
-    age = st.sidebar.select_slider(label='Age Range', 
+    age = st.sidebar.select_slider(label='**AGE RANGE**', 
                                    options=list(range(131)),
                                    value=(20, 40),
                                    key='Age')
