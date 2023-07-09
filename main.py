@@ -490,7 +490,7 @@ if st.session_state.clicked:
             fig = go.Figure(go.Funnel(
             y = ["Total Customers", "First Time", "Second Time", "Third Time", "Fourth Time","Sixth Time"],
             x = [109, 95, 8, 2, 2, 2],
-            textposition = "outside",
+            textposition = ["inside","inside","inside","outside","outside","outside"],
             textinfo = "value+percent initial",
             opacity = 0.65, marker = {"color": ["deepskyblue", "lightsalmon", "tan", "teal", "silver"],
             "line": {"width": [4, 2, 2, 3, 1, 1], "color": ["wheat", "wheat", "blue", "wheat", "wheat"]}},
@@ -501,10 +501,29 @@ if st.session_state.clicked:
                               yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),
                               legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),
                                           font=dict(family="SVN-Gilroy",size=14)),
-                              width=500, height=500)
+                              width=500, height=500,
+                              paper_bgcolor='rgba(255, 255, 255, 0)', plot_bgcolor='rgba(255, 255, 255, 0)')
             # fig.update_layout(width=930, height=620)
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE</span>', unsafe_allow_html=True)
+    #         fig = go.Figure(go.Funnel(
+    #         y = ["Total Customers", "First Time", "Second Time", "Third Time", "Fourth Time","Sixth Time"],
+    #         x = [109, 95, 8, 2, 2, 2],
+    #         textposition = "outside",
+    #         textinfo = "value+percent initial",
+    #         opacity = 0.65, marker = {"color": ["deepskyblue", "lightsalmon", "tan", "teal", "silver"],
+    #         "line": {"width": [4, 2, 2, 3, 1, 1], "color": ["wheat", "wheat", "blue", "wheat", "wheat"]}},
+    #         connector = {"line": {"color": "royalblue", "dash": "dot", "width": 3}})
+    # )
+    #         fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
+    #                           xaxis=dict(title="AGE",title_font=dict(family="SVN-Gilroy",size=14)),
+    #                           yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),
+    #                           legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),
+    #                                       font=dict(family="SVN-Gilroy",size=14)),
+    #                           width=500, height=500)
+    #         # fig.update_layout(width=930, height=620)
+    #         st.plotly_chart(fig)
+    #         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE</span>', unsafe_allow_html=True)
         with col2:
             fig = px.scatter_3d(df, x='Duration', y='Revenue', z='Age', color='Gender')\
                     .update_layout(
