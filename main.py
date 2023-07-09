@@ -571,7 +571,7 @@ background-attachment: local;
             st.write('**This 3D plot provides insight into the spread of durations and how it relates to total cost and ages. Here we can observe potential patterns, indicated by the plot’s many clusters of data points.**')
     # display dataframe + pie transportation
     with tab3:
-        st.markdown('<span style="font-family: SVN-Gilroy; font-size: 32px; font-weight: bold;">ACCOMMODATION/TRANSPORTATION</span>', unsafe_allow_html=True)
+        st.markdown('<span style="font-family: SVN-Gilroy; font-size: 32px; font-weight: bold;">ACCOMMODATION-TRANSPORTATION</span>', unsafe_allow_html=True)
         col1, col2= st.columns([0.54, 0.46], gap="small")
         with col1:
             fig = px.box(df, x='AccommodationType', y='AccommodationCost', color='AccommodationType', color_discrete_sequence=px.colors.qualitative.Prism, width=930, height=620)
