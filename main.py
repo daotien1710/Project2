@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 import os
 import plotly.express as px
 import pandas as pd
-my_data = pd.read_csv('C:\Users\mynhi\Desktop\Code\Python\Project2')
+my_data = pd.read_csv('C:\Users\mynhi\Desktop\Code\Python\Project2\data')
 
 @st.cache_data  
 def get_img_as_base64(file):
