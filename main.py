@@ -294,8 +294,8 @@ background-attachment: local;
             column_config={"Click to choose": st.column_config.CheckboxColumn(default=False)},
             disabled=["Gender"],
             hide_index=True,
-            key='Gender'
         )
+        st.session_state['Gender'] = selectedGender
         selectedGender = [ele[0] for ele in selectedGender.values.tolist() if ele[1]]
         if 'All' in selectedGender or len(selectedGender) == 0: selectedGender = df['Gender'].unique()
         df = df[df['Gender'].isin(selectedGender)]
