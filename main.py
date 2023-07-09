@@ -285,7 +285,7 @@ background-attachment: local;
     # Sidebar: personal information
     with st.sidebar.expander("**PERSONAL INFORMATION**"):
        
-        """ Select Gender """
+        # Select Gender """
         st.radio("Gender",('All', 'Male', 'Female'), key='Gender')
         # if 'Gender' not in st.session_state:
         #     st.session_state.Gender = []
@@ -305,7 +305,7 @@ background-attachment: local;
         # df = df[df['Gender'].isin(st.session_state.Gender)]
         df.reset_index(inplace=True, drop=True)
 
-        """ Select Nationality """
+        # Select Nationality """
         for c in ['Nationality']:
             df = filtration(df=df, label=c, options=df[c].unique()) 
 
