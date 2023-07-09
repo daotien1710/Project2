@@ -284,22 +284,25 @@ background-attachment: local;
 # """ Add Dropdowns for Columns """
     # Sidebar: personal information
     with st.sidebar.expander("**PERSONAL INFORMATION**"):
+       
         """ Select Gender """
-        selectedGender = st.data_editor(
-            pd.DataFrame({
-                "Gender": ["All", "Female", "Male"],
-                "Click to choose": [False, False, False],
-                }
-            ),
-            column_config={"Click to choose": st.column_config.CheckboxColumn(default=False)},
-            disabled=["Gender"],
-            hide_index=True,
-        )
-        st.session_state['Gender'] = selectedGender
-        selectedGender = [ele[0] for ele in selectedGender.values.tolist() if ele[1]]
-        if 'All' in selectedGender or len(selectedGender) == 0: selectedGender = df['Gender'].unique()
-        df = df[df['Gender'].isin(selectedGender)]
-        
+        st.radio(df, "Gender",('All', 'Male', 'Female'))
+        # if 'Gender' not in st.session_state:
+        #     st.session_state.Gender = []
+        # selectedGender = st.data_editor(
+        #     pd.DataFrame({
+        #         "Gender": ["All", "Female", "Male"],
+        #         "Click to choose": [False, False, False],
+        #         }
+        #     ),
+        #     column_config={"Click to choose": st.column_config.CheckboxColumn(default=False)},
+        #     disabled=["Gender"],
+        #     hide_index=True,
+        # )
+        # selectedGender = [ele[0] for ele in selectedGender.values.tolist() if ele[1]]
+        # st.session_state.Gender = selectedGender
+        # if 'All' in st.session_state.Gender or len(st.session_state.Gender) == 0: st.session_state.Gender = df['Gender'].unique()
+        # df = df[df['Gender'].isin(st.session_state.Gender)]
         df.reset_index(inplace=True, drop=True)
 
         """ Select Nationality """
