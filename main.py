@@ -334,7 +334,7 @@ background-attachment: local;
     # basicinformation.empty() 
 
     # """ Add New Tabs """
-    tab0, tab2, tab3 = st.tabs(['REVENUE', "CUSTOMER TREND", "TRANSPORTATION - ACCOMMODATION"])
+    tab0, tab2, tab3 = st.tabs(['**REVENUE**', "**CUSTOMER TREND**", "**TRANSPORTATION - ACCOMMODATION**"])
     
     # # """ Display Dataframe for each Tab """
     st.title('The Frame')
