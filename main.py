@@ -13,7 +13,7 @@ def get_img_as_base64(file):
 
 img1 = get_img_as_base64(os.path.join('images', "intro.jpg"))
 img2 = get_img_as_base64(os.path.join('images', "main.jpg"))
-img3 = get_img_as_base64(os.path.join('images', "sidebar.jpg"))
+img3 = get_img_as_base64(os.path.join('images', "sidebar1.jpg"))
 # #deploy
 
 # [data-testid="stAppViewContainer"] > .main {{
@@ -251,8 +251,8 @@ if st.session_state.clicked:
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img2}");
-background-size: 440%;
-background-position: middle;
+background-size: 600%;
+background-position: top-right;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
