@@ -286,8 +286,12 @@ background-attachment: local;
     with st.sidebar.expander("**PERSONAL INFORMATION**"):
        
         # Select Gender """
-        gender = st.radio("Gender",('All', 'Male', 'Female'), key='Gender')
-        print (gender)
+        selectedGender = st.radio("Gender",('All', *df['Gender'].unique()), key='Gender')
+        if 'All' in selectedGender or len(selectedGender) == 0: selectedGender = df['Gender'].unique()
+        else: selectedGender = [selectedGender]
+        df = df[df['Gender'].isin(selectedGender)]
+        # print('dasdasdasdasd')
+        # print (gender)
         # if 'Gender' not in st.session_state:
         #     st.session_state.Gender = []
         # selectedGender = st.data_editor(
@@ -355,7 +359,7 @@ background-attachment: local;
     sales['RevenueGrowthMonth'] = (sales['Revenue'] - sales['RevenueLM']) / (sales['RevenueLM'] + 1e3) * 100
     
     def clear_multi():
-        st.session_state.Gender = []
+        st.session_state.Gender = 'All'
         st.session_state.Age = (20, 40)
         st.session_state.Nationality = []
         st.session_state.DepartureDay = []
