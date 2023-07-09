@@ -79,13 +79,13 @@ background: rgba(0,0,0,0);
 right: 2rem;
 }}
 
-# [data-testid="stSidebar"] > div:first-child {{
-# background-image: url("data:image/png;base64,{img2}");
-# background-size: 500%;
-# background-position: middle;
-# background-repeat: no-repeat;
-# background-attachment: local;
-# }}
+[data-testid="stSidebar"] > div:first-child {{
+background-image: url("data:image/png;base64,{img2}");
+background-size: 500%;
+background-position: middle;
+background-repeat: no-repeat;
+background-attachment: local;
+}}
 
 </style>
 """
@@ -251,7 +251,7 @@ if st.session_state.clicked:
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img2}");
-background-size: 540%;
+background-size: 240%;
 background-position: top-right;
 background-repeat: no-repeat;
 background-attachment: local;
