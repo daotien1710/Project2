@@ -382,7 +382,7 @@ background-attachment: local;
 
         year, e = st.columns([4,5])
         with year:
-            year = st.slider(label="**Select Year**",
+            year = st.slider(label="**SELECT YEAR**",
                              min_value=df['DepartureDate'].min().year, 
                              value=date.today().year, 
                              max_value=df['DepartureDate'].max().year)
@@ -393,7 +393,7 @@ background-attachment: local;
         # Month slider
         month, f = st.columns([4,5])
         with month:
-            month = st.slider(label="**Select Month**", 
+            month = st.slider(label="**SELECT MONTH**", 
                               min_value=1, 
                               value=date.today().month, 
                               max_value=12)
@@ -404,7 +404,7 @@ background-attachment: local;
         df_one_year = sales[(sales['LeaveDate'] >= (d - pd.DateOffset(years=1))) & (sales['LeaveDate'] <= d)]
         df_one_year['LeaveDate'] = pd.to_datetime(df_one_year['LeaveDate'])
 
-        st.caption('**(These two elements are used for the "Revenue By Month" graph)**')
+        st.write('**(These two elements are used for the "Revenue By Month" graph)**')
         # Display selected year and month
         
 
