@@ -82,7 +82,7 @@ right: 2rem;
 [data-testid="stSidebar"] > div:first-child {{
 background-image: url("data:image/png;base64,{img3}");
 background-size: 500%;
-background-position: middle;
+background-position: top;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
@@ -252,7 +252,7 @@ if st.session_state.clicked:
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img2}");
 background-size: 440%;
-background-position: top-left;
+background-position: right;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
