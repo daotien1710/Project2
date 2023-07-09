@@ -325,7 +325,7 @@ background-attachment: local;
 
     # Sidebar: Destination
     with st.sidebar.expander("**DESTINATION**"):
-        for c in ['DestinationCountry', 'Continent']:
+        for c in ['Continent', 'DestinationCountry']:
             df = filtration(df=df, label=c, options=df[c].unique()) 
 
         df.reset_index(inplace=True, drop=True)
