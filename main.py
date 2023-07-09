@@ -81,7 +81,7 @@ right: 2rem;
 
 [data-testid="stSidebar"] > div:first-child {{
 background-image: url("data:image/png;base64,{img3}");
-background-size: 1000%;
+background-size: 300%;
 background-position: middle;
 background-repeat: no-repeat;
 background-attachment: local;
