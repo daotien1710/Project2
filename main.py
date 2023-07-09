@@ -13,7 +13,7 @@ def get_img_as_base64(file):
 
 img1 = get_img_as_base64(os.path.join('images', "intro.jpg"))
 img2 = get_img_as_base64(os.path.join('images', "main.jpg"))
-# img3 = get_img_as_base64(os.path.join('images', "side.PNG"))
+img3 = get_img_as_base64(os.path.join('images', "sidebar.PNG"))
 # #deploy
 
 # [data-testid="stAppViewContainer"] > .main {{
@@ -80,7 +80,7 @@ right: 2rem;
 }}
 
 [data-testid="stSidebar"] > div:first-child {{
-background-image: url("data:image/png;base64,{img2}");
+background-image: url("data:image/png;base64,{img3}");
 background-size: 500%;
 background-position: middle;
 background-repeat: no-repeat;
@@ -251,8 +251,8 @@ if st.session_state.clicked:
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img2}");
-background-size: 240%;
-background-position: top-right;
+background-size: 440%;
+background-position: top-left;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
