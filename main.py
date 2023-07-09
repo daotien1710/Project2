@@ -80,7 +80,7 @@ right: 2rem;
 }}
 
 [data-testid="stSidebar"] > div:first-child {{
-background-image: url("data:image/png;base64,{img2}");
+background-image: url("data:image/png;base64,{img3}");
 background-size: 1000%;
 background-position: middle;
 background-repeat: no-repeat;
