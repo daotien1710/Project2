@@ -404,7 +404,7 @@ background-attachment: local;
         df_one_year = sales[(sales['LeaveDate'] >= (d - pd.DateOffset(years=1))) & (sales['LeaveDate'] <= d)]
         df_one_year['LeaveDate'] = pd.to_datetime(df_one_year['LeaveDate'])
 
-        st.write('**(These two elements are used for the "Revenue By Month" graph)**')
+        st.write('(These two elements are used for the "Revenue By Month" graph)')
         # Display selected year and month
         
 
@@ -474,7 +474,7 @@ background-attachment: local;
             #    The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.
 
             #     ''')
-            st.write('The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.')
+            st.write('**The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.**')
 
         with col2:
             threshold=3000
@@ -495,7 +495,7 @@ background-attachment: local;
             # st.markdown('*Revenue By Departure Country*')
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">REVENUE BY DEPARTURE COUNTRY</span>', unsafe_allow_html=True)
             fig.update_layout(title= {'text':'REVENUE BY DEPARTURE COUNTRY','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="COUNTRIES",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14))
-            st.write('The following pie chart displays different shares of departure revenue that top tourist countries receive throughout the observed period.')
+            st.write('**The following pie chart displays different shares of departure revenue that top tourist countries receive throughout the observed period.**')
        
 
     # """ Add Content Tab Gender """
@@ -559,7 +559,7 @@ background-attachment: local;
             # st.markdown(' - The spread of durations and how it relates to total costs and age.')
             # st.markdown(' - Any potential patterns or clusters of data points based on the variables.')
             # st.markdown(' - The concentration or dispersion of data points in different regions of the plot, indicating relationships or trends.')
-            st.write('This 3D plot provides insight into the spread of durations and how it relates to total cost and ages. Here we can observe potential patterns, indicated by the plot’s many clusters of data points.')
+            st.write('**This 3D plot provides insight into the spread of durations and how it relates to total cost and ages. Here we can observe potential patterns, indicated by the plot’s many clusters of data points.**')
     # display dataframe + pie transportation
     with tab3:
         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 32px; font-weight: bold;">ACCOMMODATION/TRANSPORTATION</span>', unsafe_allow_html=True)
@@ -589,7 +589,7 @@ background-attachment: local;
             fig.update_traces(showlegend=False)
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BOXPLOT ILLUSTRATES THE PRICE OF TRANSPORTATIONS</span>', unsafe_allow_html=True)
-        st.write('The following pie chart illustrates various modes of transportation/types of accommodation and their popularity among tourists/travelers.')
+        st.write('**The following pie chart illustrates various modes of transportation/types of accommodation and their popularity among tourists/travelers.**')
 
 
         # with col1:
