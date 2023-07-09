@@ -1,18 +1,18 @@
-# import base64
+import base64
 import streamlit as st
 from streamlit import components
 st.set_page_config(layout="wide") 
                 #    initial_sidebar_state="collapsed")
 import os
 
-# @st.cache_data  
-# def get_img_as_base64(file):
-#     with open(file, "rb") as f:
-#         data = f.read()
-#     return base64.b64encode(data).decode()
+@st.cache_data  
+def get_img_as_base64(file):
+    with open(file, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
 
-# img1 = get_img_as_base64(os.path.join('images', "main.PNG"))
-# img2 = get_img_as_base64(os.path.join('images', "main1.jpeg"))
+img1 = get_img_as_base64(os.path.join('images', "intro.jpg"))
+img2 = get_img_as_base64(os.path.join('images', "main.jpg"))
 # img3 = get_img_as_base64(os.path.join('images', "side.PNG"))
 # #deploy
 
@@ -34,6 +34,14 @@ import os
 
 page_bg_img = f"""
 <style>
+
+[data-testid="stAppViewContainer"] > .main {{
+background-image: url("data:image/png;base64,{img1}");
+background-size: 110%;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: local;
+}}
 
 [id="tabs-bui3-tab-0"]{{
 background-color: rgba(0, 0, 0, 0);
@@ -70,6 +78,15 @@ background: rgba(0,0,0,0);
 [data-testid="stToolbar"] {{
 right: 2rem;
 }}
+
+# [data-testid="stSidebar"] > div:first-child {{
+# background-image: url("data:image/png;base64,{img2}");
+# background-size: 500%;
+# background-position: middle;
+# background-repeat: no-repeat;
+# background-attachment: local;
+# }}
+
 </style>
 """
 
@@ -230,17 +247,17 @@ def filtration(df:pd.DataFrame,
 
 # SIDEBAR
 if st.session_state.clicked:
-#     page_bg_img = f"""
-# <style>
-# [data-testid="stAppViewContainer"] > .main {{
-# background-image: url("data:image/png;base64,{img2}");
-# background-size: 240%;
-# background-position: top-left;
-# background-repeat: no-repeat;
-# background-attachment: local;
-# }}
-#     </style>
-# """
+    page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+background-image: url("data:image/png;base64,{img2}");
+background-size: 540%;
+background-position: top-right;
+background-repeat: no-repeat;
+background-attachment: local;
+}}
+    </style>
+"""
                 
     st.markdown(page_bg_img, unsafe_allow_html=True)
     st.sidebar.markdown("""<style>.big-font {font-size:50px !important;}</style>""", unsafe_allow_html=True)
