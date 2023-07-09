@@ -544,7 +544,7 @@ background-attachment: local;
     #         st.plotly_chart(fig)
     #         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE</span>', unsafe_allow_html=True)
         with col2:
-            fig = px.scatter(df, x='age', y='totalcost',color="gender", symbol="gender",width=1080, height=720, marginal_x="histogram", marginal_y="histogram")
+            fig = px.scatter(df, x='Age', y='Revenue',color="gender", symbol="gender",width=1080, height=720, marginal_x="histogram", marginal_y="histogram")
             fig.update_layout(title= {'text':'<b>TRAVEL INSIGHTS TOTAL COST AND AGE ANALYSIS</b>','font':{'family':'SVN-Gilroy'}},
                               xaxis=dict(title="<b>AGE</b>",title_font=dict(family="SVN-Gilroy")),
                               yaxis=dict(title="<b>TOTAL COST</b>",title_font=dict(family="SVN-Gilroy")),
