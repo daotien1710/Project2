@@ -286,7 +286,7 @@ background-attachment: local;
     with st.sidebar.expander("**PERSONAL INFORMATION**"):
        
         """ Select Gender """
-        st.radio(df, "Gender",('All', 'Male', 'Female'))
+        st.radio("Gender",('All', 'Male', 'Female'))
         # if 'Gender' not in st.session_state:
         #     st.session_state.Gender = []
         # selectedGender = st.data_editor(
