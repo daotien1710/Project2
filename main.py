@@ -545,18 +545,21 @@ background-attachment: local;
     #         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE</span>', unsafe_allow_html=True)
         with col2:
             fig = px.scatter(df, x='age', y='totalcost',color="gender", symbol="gender",width=1080, height=720, marginal_x="histogram", marginal_y="histogram")
-            fig.update_layout(title= {'text':'<b>TRAVEL INSIGHTS TOTAL COST AND AGE ANALYSIS</b>','font':{'family':'SVN-Gilroy'}},xaxis=dict(title="<b>AGE</b>",title_font=dict(family="SVN-Gilroy")),yaxis=dict(title="<b>TOTAL COST</b>",title_font=dict(family="SVN-Gilroy")),legend=dict(title="COUNTRY",title_font=dict(family="SVN-Gilroy"),font=dict(family="SVN-Gilroy")),font=dict(family="SVN-Gilroy"),paper_bgcolor="white")
+            fig.update_layout(title= {'text':'<b>TRAVEL INSIGHTS TOTAL COST AND AGE ANALYSIS</b>','font':{'family':'SVN-Gilroy'}},
+                              xaxis=dict(title="<b>AGE</b>",title_font=dict(family="SVN-Gilroy")),
+                              yaxis=dict(title="<b>TOTAL COST</b>",title_font=dict(family="SVN-Gilroy")),
+                              legend=dict(title="COUNTRY",title_font=dict(family="SVN-Gilroy"),font=dict(family="SVN-Gilroy")),
+                              font=dict(family="SVN-Gilroy"),
+                              paper_bgcolor="white",
+                              width=500, height=500)
             fig.update_traces(marker=dict(size=7, line=dict(width=1,color='DarkSlateGrey')),selector=dict(mode='markers'))
             fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
-                              legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),
-                              font=dict(family="SVN-Gilroy",size=14), 
-                              width=500, height=500)
+            # fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
+            #                   legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),
+            #                   font=dict(family="SVN-Gilroy",size=14), 
+            #                   width=500, height=500)
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">TRAVEL INSIGHTS DURATION, TOTAL COST, AND AGE ANALYSIS</span>', unsafe_allow_html=True)
-            # st.markdown(' - The spread of durations and how it relates to total costs and age.')
-            # st.markdown(' - Any potential patterns or clusters of data points based on the variables.')
-            # st.markdown(' - The concentration or dispersion of data points in different regions of the plot, indicating relationships or trends.')
             st.write('**This 3D plot provides insight into the spread of durations and how it relates to total cost and ages. Here we can observe potential patterns, indicated by the plot’s many clusters of data points.**')
     # display dataframe + pie transportation
     with tab3:
