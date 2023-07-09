@@ -490,7 +490,7 @@ background-attachment: local;
             st.write('**The graph above displays both Revenue and LTM Revenue the company obtained between August 2022 and July 2023, a period of one full year.**')
 
         with col2:
-            threshold=3000
+            threshold=3200
             r = df.groupby('DepartureCountry').sum()['Revenue'].to_frame().reset_index()
             f = r[r['Revenue'] >= threshold]
             f = f.append({'DepartureCountry': 'Other',
@@ -502,7 +502,7 @@ background-attachment: local;
                               yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),
                               legend=dict(title="COUNTRIES",title_font=dict(family="SVN-Gilroy",size=14),
                                           font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14),
-                              width=550, height=500,
+                              width=500, height=500,
                               paper_bgcolor="rgba(255,255,255,0)",plot_bgcolor='rgba(255,255,255,0)')
 
             fig.update_traces(marker=dict(line=dict(color='black', width=1.5)))
