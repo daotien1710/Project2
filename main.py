@@ -397,7 +397,7 @@ background-attachment: local;
             max_year = df['DepartureDate'].max().year
             if min_year == max_year: min_year -= 1
 
-            year = st.slider(label="**SELECT YEAR**",
+            year = st.selectbox(label="**SELECT YEAR**",
                              min_value=min_year, 
                              value=date.today().year, 
                              max_value=max_year)
@@ -408,7 +408,7 @@ background-attachment: local;
         # Month slider
         month, f = st.columns([4,5])
         with month:
-            month = st.slider(label="**SELECT MONTH**", 
+            month = st.selectbox(label="**SELECT MONTH**", 
                               min_value=1, 
                               value=date.today().month, 
                               max_value=12)
