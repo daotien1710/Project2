@@ -472,7 +472,7 @@ background-attachment: local;
                                           title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),
                               font=dict(family="SVN-Gilroy",size=14), 
                               width=500, height=500,
-                              paper_bgcolor="rgba(255,255,255,0)",plot_bgcolor='rgba(255,255,255,0)')
+                              paper_bgcolor="rgba(255,255,255,0.3)",plot_bgcolor='rgba(255,255,255,0.3)')
 
             fig.update_layout(legend=dict(orientation="h",
                                           entrywidth=80,
@@ -507,7 +507,7 @@ background-attachment: local;
                               legend=dict(title="COUNTRIES",title_font=dict(family="SVN-Gilroy",size=14),
                                           font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14),
                               width=500, height=500,
-                              paper_bgcolor="rgba(255,255,255,0)",plot_bgcolor='rgba(255,255,255,0)')
+                              paper_bgcolor="rgba(255,255,255,0.3)",plot_bgcolor='rgba(255,255,255,0.3)')
 
             fig.update_traces(marker=dict(line=dict(color='black', width=1.5)))
             st.plotly_chart(fig)
@@ -538,7 +538,7 @@ background-attachment: local;
                               legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),
                                           font=dict(family="SVN-Gilroy",size=14)),
                               width=500, height=500,
-                              paper_bgcolor='rgba(255, 255, 255, 0)', plot_bgcolor='rgba(255, 255, 255, 0)')
+                              paper_bgcolor='rgba(255, 255, 255, 0.3)', plot_bgcolor='rgba(255, 255, 255, 0.3)')
             # fig.update_layout(width=930, height=620)
             st.plotly_chart(fig)
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE</span>', unsafe_allow_html=True)
@@ -563,7 +563,7 @@ background-attachment: local;
     #         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE</span>', unsafe_allow_html=True)
         with col2:
             fig = px.scatter(df, x='Age', y='Revenue',color="Gender", symbol="Gender",width=500, height=500, marginal_x="histogram", marginal_y="histogram")
-            fig.update_layout(title= {'text':'<b>TRAVEL INSIGHTS TOTAL COST AND AGE ANALYSIS</b>','font':{'family':'SVN-Gilroy'}},xaxis=dict(title="<b>AGE</b>",title_font=dict(family="SVN-Gilroy")),yaxis=dict(title="<b>TOTAL COST</b>",title_font=dict(family="SVN-Gilroy")),legend=dict(title="COUNTRY",title_font=dict(family="SVN-Gilroy"),font=dict(family="SVN-Gilroy")),font=dict(family="SVN-Gilroy"),paper_bgcolor="rgba(255,255,255,0)",plot_bgcolor='rgba(255,255,255,0)')
+            fig.update_layout(title= {'text':'<b>TRAVEL INSIGHTS TOTAL COST AND AGE ANALYSIS</b>','font':{'family':'SVN-Gilroy'}},xaxis=dict(title="<b>AGE</b>",title_font=dict(family="SVN-Gilroy")),yaxis=dict(title="<b>TOTAL COST</b>",title_font=dict(family="SVN-Gilroy")),legend=dict(title="COUNTRY",title_font=dict(family="SVN-Gilroy"),font=dict(family="SVN-Gilroy")),font=dict(family="SVN-Gilroy"),paper_bgcolor="rgba(255,255,255,0.3)",plot_bgcolor='rgba(255,255,255,0.3)')
             fig.update_traces(marker=dict(size=7, line=dict(width=1,color='DarkSlateGrey')),selector=dict(mode='markers'))
             fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
             st.plotly_chart(fig)
@@ -580,8 +580,8 @@ background-attachment: local;
                               yaxis=dict(title="<b>COST OF ACCOMMODATION</b>",title_font=dict(family="SVN-Gilroy",size=14)),
                               legend=dict(title="<b>GENDER</b>",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),
                               font=dict(family="SVN-Gilroy",size=14),
-                              paper_bgcolor='rgba(255, 255, 255, 0)',
-                              plot_bgcolor='rgba(255, 255, 255, 0.1)',
+                              paper_bgcolor='rgba(255, 255, 255, 0.3)',
+                              plot_bgcolor='rgba(255, 255, 255, 0.3)',
                               width=450, height=450)
             fig.update_traces(showlegend=False)
             st.plotly_chart(fig)
@@ -593,7 +593,7 @@ background-attachment: local;
                               xaxis=dict(title="<b>TYPES OF TRANSPORTATION</b>",title_font=dict(family="SVN-Gilroy", size=14)),
                               yaxis=dict(title="<b>COST OF TRANSPORTATION</b>",title_font=dict(family="SVN-Gilroy",size=14)),
                               legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy", size=14),font=dict(family="SVN-Gilroy",size=14)),
-                              font=dict(family="SVN-Gilroy",size=14),paper_bgcolor='rgba(255, 255, 255, 0)',plot_bgcolor='rgba(255, 255, 255, 0.1)',
+                              font=dict(family="SVN-Gilroy",size=14),paper_bgcolor='rgba(255, 255, 255, 0.3)',plot_bgcolor='rgba(255, 255, 255, 0.3)',
                               width=450, height=450)
             fig.update_traces(showlegend=False)
             st.plotly_chart(fig)
