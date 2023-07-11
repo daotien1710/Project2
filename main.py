@@ -15,7 +15,7 @@ def get_img_as_base64(file):
 
 img1 = get_img_as_base64(os.path.join('images', "intro.jpg"))
 img2 = get_img_as_base64(os.path.join('images', "main3.jpg"))
-img3 = get_img_as_base64(os.path.join('images', "sidebar1.jpg"))
+img3 = get_img_as_base64(os.path.join('images', "main2.jpg"))
 # #deploy
 
 # [data-testid="stAppViewContainer"] > .main {{
