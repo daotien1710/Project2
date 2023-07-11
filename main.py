@@ -15,7 +15,7 @@ def get_img_as_base64(file):
 
 img1 = get_img_as_base64(os.path.join('images', "intro.jpg"))
 img2 = get_img_as_base64(os.path.join('images', "main3.jpg"))
-img3 = get_img_as_base64(os.path.join('images', "main2.jpg"))
+img3 = get_img_as_base64(os.path.join('images', "sidebar1.jpg"))
 # #deploy
 
 # [data-testid="stAppViewContainer"] > .main {{
@@ -83,7 +83,7 @@ right: 2rem;
 
 [data-testid="stSidebar"] > div:first-child {{
 background-image: url("data:image/png;base64,{img3}");
-background-size: 350%;
+background-size: 300%;
 background-position: middle;
 background-repeat: no-repeat;
 background-attachment: local;
