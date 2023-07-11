@@ -345,13 +345,13 @@ background-attachment: local;
     # basicinformation.empty() 
 
     # """ Add New Tabs """
-    tab0, tab2, tab3 = st.tabs(['**REVENUE**', "**CUSTOMER TREND**", "**TRANSPORTATION - ACCOMMODATION**"])
+    tab0, tab2, tab3, tab4 = st.tabs(['**REVENUE**', "**CUSTOMER TREND**", "**TRANSPORTATION - ACCOMMODATION**, **DATA FRAME**"])
     
-    # # """ Display Dataframe for each Tab """
-    st.title('The Frame')
-    # df.drop(['ID', 'DepartureDay', 'DepartureYear', 'DepartureMonth', 'Season', 'DepartureMonthString', 'Revenue', 'CustomerName'], axis='columns', inplace=True)
-    st.dataframe(data=df[['Age', 'Gender', 'Nationality', 'DepartureDate', 'Duration', 'DestinationCountry', 'TransportationType', 'AccommodationType', 'Revenue']], width=1500, use_container_width=True)
-    # st.dataframe(data=df.style.format({'DepartureYear': lambda x : f'{x}'}))
+    # # # """ Display Dataframe for each Tab """
+    # st.title('The Frame')
+    # # df.drop(['ID', 'DepartureDay', 'DepartureYear', 'DepartureMonth', 'Season', 'DepartureMonthString', 'Revenue', 'CustomerName'], axis='columns', inplace=True)
+    # st.dataframe(data=df[['Age', 'Gender', 'Nationality', 'DepartureDate', 'Duration', 'DestinationCountry', 'TransportationType', 'AccommodationType', 'Revenue']], width=1500, use_container_width=True)
+    # # st.dataframe(data=df.style.format({'DepartureYear': lambda x : f'{x}'}))
     
     # Data to display
     sales = df.groupby(pd.Grouper(key='LeaveDate', freq='M')).sum()['Revenue'].to_frame().reset_index()
@@ -600,7 +600,13 @@ background-attachment: local;
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">BOXPLOT ILLUSTRATES THE PRICE OF TRANSPORTATIONS</span>', unsafe_allow_html=True)
         st.write('**The following pie chart illustrates various modes of transportation/types of accommodation and their popularity among tourists/travelers.**')
 
-
+    with tab4:
+        # # """ Display Dataframe for each Tab """
+        st.title('The Frame')
+    # df.drop(['ID', 'DepartureDay', 'DepartureYear', 'DepartureMonth', 'Season', 'DepartureMonthString', 'Revenue', 'CustomerName'], axis='columns', inplace=True)
+        st.dataframe(data=df[['Age', 'Gender', 'Nationality', 'DepartureDate', 'Duration', 'DestinationCountry', 'TransportationType', 'AccommodationType', 'Revenue']], width=1500, use_container_width=True)
+    # st.dataframe(data=df.style.format({'DepartureYear': lambda x : f'{x}'}))
+    
         # with col1:
         #     small_data = df[['TransportationType']]
         #     # print(small_data)
