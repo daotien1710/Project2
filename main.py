@@ -253,8 +253,8 @@ if st.session_state.clicked:
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img2}");
-background-size: 350%;
-background-position: center-left;
+background-size: 300%;
+background-position: center;
 background-repeat: no-repeat;
 background-attachment: local;
 }}
