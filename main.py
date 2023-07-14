@@ -509,7 +509,7 @@ background-attachment: local;
                               width=500, height=500,
                               paper_bgcolor="rgba(255,255,255,0.3)",plot_bgcolor='rgba(255,255,255,0.3)')
 
-            fig.update_traces(marker=dict(line=dict(color='black', width=1.5)))
+            fig.update_traces(marker=dict(line=dict(color='black', width=1.5)), texttemplate='%{percent:.1%}', textposition='inside')
             st.plotly_chart(fig)
             # st.markdown('*Revenue By Departure Country*')
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">REVENUE BY DEPARTURE COUNTRY</span>', unsafe_allow_html=True)
