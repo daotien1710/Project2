@@ -290,24 +290,7 @@ background-attachment: local;
         if 'All' in selectedGender or len(selectedGender) == 0: selectedGender = df['Gender'].unique()
         else: selectedGender = [selectedGender]
         df = df[df['Gender'].isin(selectedGender)]
-        # print('dasdasdasdasd')
-        # print (gender)
-        # if 'Gender' not in st.session_state:
-        #     st.session_state.Gender = []
-        # selectedGender = st.data_editor(
-        #     pd.DataFrame({
-        #         "Gender": ["All", "Female", "Male"],
-        #         "Click to choose": [False, False, False],
-        #         }
-        #     ),
-        #     column_config={"Click to choose": st.column_config.CheckboxColumn(default=False)},
-        #     disabled=["Gender"],
-        #     hide_index=True,
-        # )
-        # selectedGender = [ele[0] for ele in selectedGender.values.tolist() if ele[1]]
-        # st.session_state.Gender = selectedGender
-        # if 'All' in st.session_state.Gender or len(st.session_state.Gender) == 0: st.session_state.Gender = df['Gender'].unique()
-        # df = df[df['Gender'].isin(st.session_state.Gender)]
+        
         df.reset_index(inplace=True, drop=True)
 
         # Select Nationality """
@@ -397,10 +380,11 @@ background-attachment: local;
             max_year = df['DepartureDate'].max().year
             if min_year == max_year: min_year -= 1
 
-            year = st.slider(label="**SELECT YEAR**",
-                             min_value=min_year, 
-                             value=date.today().year, 
-                             max_value=max_year)
+            year = st.selectbox(label="**SELECT YEAR**", *df['DepartureDate'].unique())
+                             
+                            #  min_value=min_year, 
+                            #  value=date.today().year, 
+                            #  max_value=max_year)
         with e:
             st.write()
         
