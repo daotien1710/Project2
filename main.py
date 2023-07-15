@@ -370,8 +370,8 @@ background-attachment: local;
         st.session_state.Continent = []
         st.session_state.AccommodationType = []
         st.session_state.TransportationType = []
-        st.session_state.Month = m
-        st.session_state.Year = y
+        st.session_state.Month = []
+        st.session_state.Year = []
         # st.session_state.Month = m[date.today().month]
         # st.session_state.Year = date.today().year
 
