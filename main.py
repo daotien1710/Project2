@@ -514,7 +514,7 @@ background-attachment: local;
             # st.markdown('*Revenue By Departure Country*')
             st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">REVENUE BY DEPARTURE COUNTRY</span>', unsafe_allow_html=True)
             fig.update_layout(title= {'text':'REVENUE BY DEPARTURE COUNTRY','font':{'family':'SVN-Gilroy','size':20}},xaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),legend=dict(title="COUNTRIES",title_font=dict(family="SVN-Gilroy",size=14),font=dict(family="SVN-Gilroy",size=14)),font=dict(family="SVN-Gilroy",size=14))
-            st.write('**The following pie chart displays different shares of departure revenue that top tourist countries receive throughout the observed period.**')
+            st.write('**The following boxplot displays different shares of departure revenue that top tourist countries receive throughout the observed period.**')
        
 
     # """ Add Content Tab Gender """
