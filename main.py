@@ -396,9 +396,9 @@ background-attachment: local;
         
         year, e = st.columns([4,5])
         with year:
-            # min_year = df['DepartureDate'].min().year
-            # max_year = df['DepartureDate'].max().year
-            # if min_year == max_year: min_year -= 1
+            min_year = df['DepartureDate'].min().year
+            max_year = df['DepartureDate'].max().year
+            if min_year == max_year: min_year -= 1
 
             y = sorted(df['DepartureYear'].unique())
             year = st.selectbox(label="**SELECT YEAR**", 
