@@ -251,11 +251,11 @@ with placeholder.container():
 def filtration(df:pd.DataFrame, 
                label:str, 
                options:list, 
-               default:str='All', 
+            #    default:str='All', 
                all_in_options:bool=True) -> pd.DataFrame:
     if all_in_options: 
         if 'all' not in options:
-            options = [default, *sorted(options)]
+            options = [*sorted(options)]
     choosen = st.multiselect(label=re.sub(r'(?<=\w)([A-Z])', r' \1', label).strip(),
                              options=options,
                              key=label)  
