@@ -313,6 +313,7 @@ background-attachment: local;
             df = filtration(df=df, label=c, options=df[c].unique()) 
 
         df.reset_index(inplace=True, drop=True)
+        print(df)
 
     # # Sidebar: Departure
     # with st.sidebar.expander("Departure"):
@@ -390,7 +391,7 @@ background-attachment: local;
         # with penetration:
         #     st.write()
         # print(df['DepartureDate'].min().year, df['DepartureDate'].max())
-
+        
         year, e = st.columns([4,5])
         with year:
             min_year = df['DepartureDate'].min().year
@@ -400,7 +401,6 @@ background-attachment: local;
             y = sorted(df['DepartureYear'].unique())
             year = st.selectbox(label="**SELECT YEAR**", 
                                 options=y,
-                                index=y.index(date.today().year),
                                 key='Year')
         with e:
             st.write()
@@ -416,7 +416,6 @@ background-attachment: local;
             # print(m.values())
             month = st.selectbox(label="**SELECT MONTH**", 
                                  options=m.values(),
-                                 index=date.today().month-1,
                                  key='Month')
         with f: 
             st.write()
