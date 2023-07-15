@@ -396,14 +396,14 @@ background-attachment: local;
         
         year, e = st.columns([4,5])
         with year:
-            min_year = df['DepartureDate'].min().year
-            max_year = df['DepartureDate'].max().year
-            if min_year == max_year: min_year -= 1
+            # min_year = df['DepartureDate'].min().year
+            # max_year = df['DepartureDate'].max().year
+            # if min_year == max_year: min_year -= 1
 
             y = sorted(df['DepartureYear'].unique())
             year = st.selectbox(label="**SELECT YEAR**", 
                                 options=y,
-                                index=y.index(date.today().year),
+                                # index=y.index(date.today().year),
                                 key='Year')
         with e:
             st.write()
@@ -419,7 +419,7 @@ background-attachment: local;
             # print(m.values())
             month = st.selectbox(label="**SELECT MONTH**", 
                                  options=m.values(),
-                                 index=date.today().month-1,
+                                #  index=date.today().month-1,
                                  key='Month')
         with f: 
             st.write()
