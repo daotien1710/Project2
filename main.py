@@ -401,6 +401,7 @@ background-attachment: local;
             y = sorted(df['DepartureYear'].unique())
             year = st.selectbox(label="**SELECT YEAR**", 
                                 options=y,
+                                # index=y.index(date.today().year),
                                 key='Year')
         with e:
             st.write()
@@ -416,6 +417,7 @@ background-attachment: local;
             # print(m.values())
             month = st.selectbox(label="**SELECT MONTH**", 
                                  options=m.values(),
+                                #  index=date.today().month-1,
                                  key='Month')
         with f: 
             st.write()
