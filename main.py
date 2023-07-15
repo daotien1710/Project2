@@ -370,8 +370,8 @@ background-attachment: local;
         st.session_state.Continent = []
         st.session_state.AccommodationType = []
         st.session_state.TransportationType = []
-        st.session_state.Month = month
-        st.session_state.Year = year
+        st.session_state.Month = df['DepartureMonthString'][0]
+        st.session_state.Year = sorted(df['DepartureYear'].unique())[0]
         # st.session_state.Month = m[date.today().month]
         # st.session_state.Year = date.today().year
 
