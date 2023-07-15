@@ -7,6 +7,21 @@ import os
 import plotly.express as px
 import pandas as pd
 
+m = {
+    1: 'Jan',
+    2: 'Feb',
+    3: 'Mar',
+    4: 'Arp',
+    5: 'May',
+    6: 'June',
+    7: 'July',
+    8: 'Aug',
+    9: 'Sep',
+    10: 'Oct',
+    11: 'Nov',
+    12: 'Dec'
+}
+
 @st.cache_data  
 def get_img_as_base64(file):
     with open(file, "rb") as f:
@@ -354,6 +369,8 @@ background-attachment: local;
         st.session_state.Continent = []
         st.session_state.AccommodationType = []
         st.session_state.TransportationType = []
+        st.session_state.Month = m[date.today().month]
+        st.session_state.Year = date.today().year
 
         return
     reset = st.sidebar.button('Reset', on_click=clear_multi)
@@ -380,11 +397,11 @@ background-attachment: local;
             max_year = df['DepartureDate'].max().year
             if min_year == max_year: min_year -= 1
 
-            year = st.selectbox(label="**SELECT YEAR**", *df['DepartureDate'].unique())
-                             
-                            #  min_value=min_year, 
-                            #  value=date.today().year, 
-                            #  max_value=max_year)
+            y = sorted(df['DepartureYear'].unique())
+            year = st.selectbox(label="**SELECT YEAR**", 
+                                options=y,
+                                index=y.index(date.today().year),
+                                key='Year')
         with e:
             st.write()
         
@@ -392,14 +409,21 @@ background-attachment: local;
         # Month slider
         month, f = st.columns([4,5])
         with month:
-            month = st.slider(label="**SELECT MONTH**", 
-                              min_value=1, 
-                              value=date.today().month, 
-                              max_value=12)
+            # month = st.slider(label="**SELECT MONTH**", 
+            #                   min_value=1, 
+            #                   value=date.today().month, 
+            #                   max_value=12)
+            # print(m.values())
+            month = st.selectbox(label="**SELECT MONTH**", 
+                                 options=m.values(),
+                                 index=date.today().month-1,
+                                 key='Month')
         with f: 
             st.write()
 
-        d = datetime(year=year, month=month, day=1, hour=0, minute=0, second=0)
+        # print('=========================================================')
+        # print(f'{list(m.values()).index(month)+1 = }')
+        d = datetime(year=year, month=list(m.values()).index(month)+1, day=1, hour=0, minute=0, second=0)
         df_one_year = sales[(sales['LeaveDate'] >= (d - pd.DateOffset(years=1))) & (sales['LeaveDate'] <= d)]
         df_one_year['LeaveDate'] = pd.to_datetime(df_one_year['LeaveDate'])
 
