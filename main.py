@@ -582,7 +582,7 @@ background-attachment: local;
     #         st.markdown('<span style="font-family: SVN-Gilroy; font-size: 20px; font-weight: bold;">FUNNEL CHART ILLUSTRATES THE NUMBER OF CUSTOMERS USING THE SERVICE</span>', unsafe_allow_html=True)
         with col2:
             fig = px.scatter(df, x='Age', y='Revenue',color="Gender", symbol="Gender",width=500, height=500, marginal_x="histogram", marginal_y="histogram")
-            fig.update_layout(title= {'text':'<b>TRAVEL INSIGHTS TOTAL COST AND AGE ANALYSIS</b>','font':{'family':'SVN-Gilroy'}},xaxis=dict(title="<b>AGE</b>",title_font=dict(family="SVN-Gilroy")),yaxis=dict(title="<b>TOTAL COST</b>",title_font=dict(family="SVN-Gilroy")),legend=dict(title="COUNTRY",title_font=dict(family="SVN-Gilroy"),font=dict(family="SVN-Gilroy")),font=dict(family="SVN-Gilroy"),paper_bgcolor="rgba(255,255,255,0)",plot_bgcolor='rgba(255,255,255,0)')
+            fig.update_layout(title= {'text':'<b>TRAVEL INSIGHTS TOTAL COST AND AGE ANALYSIS</b>','font':{'family':'SVN-Gilroy'}},xaxis=dict(title="<b>AGE</b>",title_font=dict(family="SVN-Gilroy")),yaxis=dict(title="<b>TOTAL COST</b>",title_font=dict(family="SVN-Gilroy")),legend=dict(title="<b>GENDER</b>",title_font=dict(family="SVN-Gilroy"),font=dict(family="SVN-Gilroy")),font=dict(family="SVN-Gilroy"),paper_bgcolor="rgba(255,255,255,0)",plot_bgcolor='rgba(255,255,255,0)')
             fig.update_traces(marker=dict(size=7, line=dict(width=1,color='DarkSlateGrey')),selector=dict(mode='markers'))
             fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
             st.plotly_chart(fig)
