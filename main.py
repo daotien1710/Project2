@@ -2,8 +2,7 @@ import base64
 import streamlit as st
 from streamlit import components
 st.set_page_config(layout="wide", page_title = "Journey Youth",
-                   page_icon = ":airplane_arriving:",
-                   layout = "centered") 
+                   page_icon = ":airplane_arriving:") 
                 #    initial_sidebar_state="collapsed")
 import os
 import plotly.express as px
