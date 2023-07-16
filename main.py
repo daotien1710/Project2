@@ -545,7 +545,7 @@ background-attachment: local;
     #         connector = {"line": {"color": "royalblue", "dash": "dot", "width": 3}})
     # )
             grouped_data = df.groupby('DestinationCountry').agg({'Revenue': 'mean', 'DestinationCountry': 'count', 'DestinationCountry': 'size'}).rename(columns={'DestinationCountry': 'count'}).reset_index()
-            filtered_data = grouped_data[grouped_data['count'] > 5]
+            filtered_data = grouped_data[grouped_data['count'] > 0]
 
             fig = px.scatter(filtered_data, x='Revenue', y='count',color='DestinationCountry',width=1080, height=720)
             fig.update_layout(title= {'text':'<b>AVERAGE REVENUE AND THE NUMBER OF VISITORS CHOOSING THIS DESTINATION</b>','font':{'family':'SVN-Gilroy'}},xaxis=dict(title="<b>AVERAGE REVENUE</b>",title_font=dict(family="SVN-Gilroy")),yaxis=dict(title="<b>NUMBER OF VISITORS</b>",title_font=dict(family="SVN-Gilroy")),legend=dict(title="<b>COUNTRY</b>",title_font=dict(family="SVN-Gilroy"),font=dict(family="SVN-Gilroy")),font=dict(family="SVN-Gilroy"),paper_bgcolor="white")
