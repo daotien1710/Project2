@@ -552,8 +552,8 @@ background-attachment: local;
             fig.update_traces(marker=dict(size=10, line=dict(width=2,color='DarkSlateGrey')),selector=dict(mode='markers'))
             fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
             fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
-                              xaxis=dict(title="AGE",title_font=dict(family="SVN-Gilroy",size=14)),
-                              yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),
+                              xaxis=dict(title="<b>AVERAGE REVENUE</b>",title_font=dict(family="SVN-Gilroy",size=14)),
+                              yaxis=dict(title="<b>COUNT</b>",title_font=dict(family="SVN-Gilroy",size=14)),
                               legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),
                                           font=dict(family="SVN-Gilroy",size=14)),
                               width=500, height=500,
