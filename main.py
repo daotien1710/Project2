@@ -553,7 +553,7 @@ background-attachment: local;
             fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
             fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
                               xaxis=dict(title="<b>AVERAGE REVENUE</b>",title_font=dict(family="SVN-Gilroy",size=14)),
-                              yaxis=dict(title="<b>COUNT</b>",title_font=dict(family="SVN-Gilroy",size=14)),
+                              yaxis=dict(title="<b>NUMBER OF VISITORS</b>",title_font=dict(family="SVN-Gilroy",size=14)),
                               legend=dict(title="<b>DESTINATION COUNTRY</b>",title_font=dict(family="SVN-Gilroy",size=14),
                                           font=dict(family="SVN-Gilroy",size=14)),
                               width=500, height=500,
