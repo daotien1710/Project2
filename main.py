@@ -547,11 +547,11 @@ background-attachment: local;
           grouped_data = df.groupby('DestinationCountry').agg({'Revenue': 'mean', 'DestinationCountry': 'count', 'DestinationCountry': 'size'}).rename(columns={'DestinationCountry': 'count'}).reset_index()
           filtered_data = grouped_data[grouped_data['count'] > 5]
 
-          fig = px.scatter(filtered_data, x='Revenue', y='count',color='DestinationCountry',width=1080, height=720)
-          fig.update_layout(title= {'text':'<b>AVERAGE REVENUE AND THE NUMBER OF VISITORS CHOOSING THIS DESTINATION</b>','font':{'family':'SVN-Gilroy'}},xaxis=dict(title="<b>AVERAGE REVENUE</b>",title_font=dict(family="SVN-Gilroy")),yaxis=dict(title="<b>NUMBER OF VISITORS</b>",title_font=dict(family="SVN-Gilroy")),legend=dict(title="<b>COUNTRY</b>",title_font=dict(family="SVN-Gilroy"),font=dict(family="SVN-Gilroy")),font=dict(family="SVN-Gilroy"),paper_bgcolor="white")
-          fig.update_traces(marker=dict(size=15, line=dict(width=2,color='DarkSlateGrey')),selector=dict(mode='markers'))
-          fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
-          fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
+            fig = px.scatter(filtered_data, x='Revenue', y='count',color='DestinationCountry',width=1080, height=720)
+            fig.update_layout(title= {'text':'<b>AVERAGE REVENUE AND THE NUMBER OF VISITORS CHOOSING THIS DESTINATION</b>','font':{'family':'SVN-Gilroy'}},xaxis=dict(title="<b>AVERAGE REVENUE</b>",title_font=dict(family="SVN-Gilroy")),yaxis=dict(title="<b>NUMBER OF VISITORS</b>",title_font=dict(family="SVN-Gilroy")),legend=dict(title="<b>COUNTRY</b>",title_font=dict(family="SVN-Gilroy"),font=dict(family="SVN-Gilroy")),font=dict(family="SVN-Gilroy"),paper_bgcolor="white")
+            fig.update_traces(marker=dict(size=15, line=dict(width=2,color='DarkSlateGrey')),selector=dict(mode='markers'))
+            fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
+            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
                               xaxis=dict(title="AGE",title_font=dict(family="SVN-Gilroy",size=14)),
                               yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),
                               legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),
