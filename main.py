@@ -7,6 +7,10 @@ import os
 import plotly.express as px
 import pandas as pd
 
+st.set_page_config(page_title = "Journey Youth",
+                   page_icon = ":airplane_arriving:",
+                   layout = "centered")
+
 m = {
     1: 'January',
     2: 'February',
