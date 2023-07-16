@@ -544,7 +544,7 @@ background-attachment: local;
     #         "line": {"width": [4, 2, 2, 3, 1, 1], "color": ["wheat", "wheat", "blue", "wheat", "wheat"]}},
     #         connector = {"line": {"color": "royalblue", "dash": "dot", "width": 3}})
     # )
-          grouped_data = my_data.groupby('DestinationCountry').agg({'Revenue': 'mean', 'DestinationCountry': 'count', 'DestinationCountry': 'size'}).rename(columns={'DestinationCountry': 'count'}).reset_index()
+          grouped_data = df.groupby('DestinationCountry').agg({'Revenue': 'mean', 'DestinationCountry': 'count', 'DestinationCountry': 'size'}).rename(columns={'DestinationCountry': 'count'}).reset_index()
           filtered_data = grouped_data[grouped_data['count'] > 5]
 
           fig = px.scatter(filtered_data, x='Revenue', y='count',color='DestinationCountry',width=1080, height=720)
