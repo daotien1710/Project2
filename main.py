@@ -535,16 +535,23 @@ background-attachment: local;
         col1, col2= st.columns([0.54, 0.46], gap="small")
         from plotly import graph_objects as go
         with col1:
-            fig = go.Figure(go.Funnel(
-            y = ["Total Customers", "First Time", "Second Time", "Third Time", "Fourth Time","Sixth Time"],
-            x = [109, 95, 8, 2, 2, 2],
-            textposition = ["inside","inside","inside","outside","outside","outside"],
-            textinfo = "value+percent initial",
-            opacity = 0.65, marker = {"color": ["deepskyblue", "lightsalmon", "tan", "teal", "silver"],
-            "line": {"width": [4, 2, 2, 3, 1, 1], "color": ["wheat", "wheat", "blue", "wheat", "wheat"]}},
-            connector = {"line": {"color": "royalblue", "dash": "dot", "width": 3}})
-    )
-            fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
+    #         fig = go.Figure(go.Funnel(
+    #         y = ["Total Customers", "First Time", "Second Time", "Third Time", "Fourth Time","Sixth Time"],
+    #         x = [109, 95, 8, 2, 2, 2],
+    #         textposition = ["inside","inside","inside","outside","outside","outside"],
+    #         textinfo = "value+percent initial",
+    #         opacity = 0.65, marker = {"color": ["deepskyblue", "lightsalmon", "tan", "teal", "silver"],
+    #         "line": {"width": [4, 2, 2, 3, 1, 1], "color": ["wheat", "wheat", "blue", "wheat", "wheat"]}},
+    #         connector = {"line": {"color": "royalblue", "dash": "dot", "width": 3}})
+    # )
+          grouped_data = my_data.groupby('DestinationCountry').agg({'Revenue': 'mean', 'DestinationCountry': 'count', 'DestinationCountry': 'size'}).rename(columns={'DestinationCountry': 'count'}).reset_index()
+          filtered_data = grouped_data[grouped_data['count'] > 5]
+
+          fig = px.scatter(filtered_data, x='Revenue', y='count',color='DestinationCountry',width=1080, height=720)
+          fig.update_layout(title= {'text':'<b>AVERAGE REVENUE AND THE NUMBER OF VISITORS CHOOSING THIS DESTINATION</b>','font':{'family':'SVN-Gilroy'}},xaxis=dict(title="<b>AVERAGE REVENUE</b>",title_font=dict(family="SVN-Gilroy")),yaxis=dict(title="<b>NUMBER OF VISITORS</b>",title_font=dict(family="SVN-Gilroy")),legend=dict(title="<b>COUNTRY</b>",title_font=dict(family="SVN-Gilroy"),font=dict(family="SVN-Gilroy")),font=dict(family="SVN-Gilroy"),paper_bgcolor="white")
+          fig.update_traces(marker=dict(size=15, line=dict(width=2,color='DarkSlateGrey')),selector=dict(mode='markers'))
+          fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
+          fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
                               xaxis=dict(title="AGE",title_font=dict(family="SVN-Gilroy",size=14)),
                               yaxis=dict(title="",title_font=dict(family="SVN-Gilroy",size=14)),
                               legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),
