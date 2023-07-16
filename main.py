@@ -554,7 +554,7 @@ background-attachment: local;
             fig.update_layout(title= {'text':'','font':{'family':'SVN-Gilroy','size':20}},
                               xaxis=dict(title="<b>AVERAGE REVENUE</b>",title_font=dict(family="SVN-Gilroy",size=14)),
                               yaxis=dict(title="<b>COUNT</b>",title_font=dict(family="SVN-Gilroy",size=14)),
-                              legend=dict(title="GENDER",title_font=dict(family="SVN-Gilroy",size=14),
+                              legend=dict(title="<b>DESTINATION COUNTRY</b>",title_font=dict(family="SVN-Gilroy",size=14),
                                           font=dict(family="SVN-Gilroy",size=14)),
                               width=500, height=500,
                               paper_bgcolor='rgba(255, 255, 255, 0)', plot_bgcolor='rgba(255, 255, 255, 0)')
